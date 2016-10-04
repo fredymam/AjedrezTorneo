@@ -5,8 +5,8 @@ import java.util.*;
 public class Jugador {
 	private char sexo;
 	private Date nacimiento;
-	public Jugador() {
-		
+	public Jugador(String nombre) {
+		this.nombre = nombre;
 	}
 	public char getSexo() {
 		return sexo;
@@ -21,7 +21,21 @@ public class Jugador {
 		this.nacimiento = nacimiento;
 	}
 	public int getEdad() {
+		Date fecha_hoy = new Date();
+		int HoyAnio = fecha_hoy.getYear();
+		int HoyMes = fecha_hoy.getMonth();
+		int HoyDia = fecha_hoy.getDate();
 		
+		int NacAnio = nacimiento.getYear();
+		int NacMes = nacimiento.getMonth();
+		int NacDia = nacimiento.getDate();
+		
+		if (HoyMes > NacMes){
+			return HoyAnio - NacAnio;
+		}else if(HoyMes <= NacMes) && (HoyDia <=NacDia){
+			return  ;
+		}
+		return edad;
 	}
 	
 }
