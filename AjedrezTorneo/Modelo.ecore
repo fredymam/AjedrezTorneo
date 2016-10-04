@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="logica" nsURI="" nsPrefix="">
+  <eClassifiers xsi:type="ecore:EClass" name="Jugador">
+    <eOperations name="Jugador">
+      <eParameters name="nombre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="getEdad" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eOperations name="getCategoria" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Nombre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="FechaNacimiento" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Sexo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EChar"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ELO" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="2000"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TieBreak" abstract="true">
+    <eOperations name="TieBreak"/>
+    <eOperations name="desempate"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Progresivo" eSuperTypes="#//TieBreak">
+    <eOperations name="desempate"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Bucholz" eSuperTypes="#//TieBreak">
+    <eOperations name="desempate"/>
+    <eOperations name="Bucholz"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Tipo" eType="#//ETypeBucholz"
+        transient="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Variante" eType="#//EVarBucholz"
+        transient="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Torneo">
+    <eOperations name="pareo">
+      <eParameters name="int" eType="#//Ronda"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Nombre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Fecha" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Lugar" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tiebreak" lowerBound="1"
+        upperBound="-1" eType="#//TieBreak" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ronda" upperBound="-1"
+        eType="#//Ronda" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="jugador" upperBound="-1"
+        eType="#//Jugador" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Modalidad" eType="#//EModalidad"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Participantes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Rondas" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="7"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arbitro" lowerBound="1"
+        upperBound="-1" eType="#//Arbitro" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Ronda">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="partida" upperBound="-1"
+        eType="#//Partida" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SonnebornBerger" eSuperTypes="#//TieBreak">
+    <eOperations name="desempate"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EVarBucholz">
+    <eLiterals name="TOTAL"/>
+    <eLiterals name="TOP" value="1"/>
+    <eLiterals name="MEDIO" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ETypeBucholz">
+    <eLiterals name="STANDARD"/>
+    <eLiterals name="FIDE" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EModalidad">
+    <eLiterals name="SWISS" value="1"/>
+    <eLiterals name="ROUNDROBIN" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Partida">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="jugador" lowerBound="2"
+        upperBound="2" eType="#//Jugador"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Resultado" eType="#//EResultado"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Mesa" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EResultado">
+    <eLiterals name="UNDEFINED"/>
+    <eLiterals name="BLANCAS" value="1"/>
+    <eLiterals name="TABLAS" value="2"/>
+    <eLiterals name="NEGRAS" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Arbitro">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Nombre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Categoria" eType="#//ECategoria"
+        defaultValueLiteral="INACTIVO"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ECategoria">
+    <eLiterals name="MUNDIAL"/>
+    <eLiterals name="CONTINENTAL" value="1"/>
+    <eLiterals name="REGIONAL" value="2"/>
+    <eLiterals name="INACTIVO" value="3"/>
+  </eClassifiers>
+</ecore:EPackage>
