@@ -1,15 +1,21 @@
 package logica;
-import java.util.*;
+
+import java.sql.Date;
 
 public class Torneo {
-	public String Lugar;
-	public Jugador[] Participantes;
-    public Arbitro[] Arbitros; 
-    public Ronda[] Rondas; 
-    public String Premio;
-    public Date Fecha;
-    public Jugabilidad[] Modo;
-    public Lugar[] Ubicacion;
-    public Desempate[] TieBreak;
-    
+	private String Nombre;
+	private Date Fecha;
+	private String Lugar;
+	private enum Modalidad {SWISS,ROUNDROBIN};
+	private Modalidad modalidad;
+	private int nroJugadores;
+	private int nroRondas = 7;
+
+	
+	public Torneo() {
+		modalidad = Modalidad.SWISS;
+		
+				
+	}
+	
 }
