@@ -18,13 +18,13 @@ public class Arbitro {
 	
 	public void arbitro(){
 		switch (categoria){
-			case 0:
+			case 'A':
 			    System.out.println("arbitro mundial"); break;
-			case 1:
+			case 'B':
 				System.out.println("arbitro continental"); break;
-			case 2:
+			case 'C':
 				System.out.println("arbitro regional"); break;
-			case 3:
+			case 'D':
 				System.out.println("arbitro inactivo"); break;
 				
 			
