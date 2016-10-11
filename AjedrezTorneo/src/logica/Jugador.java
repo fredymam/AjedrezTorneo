@@ -1,12 +1,16 @@
 package logica;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Jugador {
 	private char sexo;
+	public String nombre;
 	private Date nacimiento;
 	public Jugador(String nombre) {
 		this.nombre = nombre;
+		nacimiento = new Date();
 	}
 	public char getSexo() {
 		return sexo;
@@ -17,8 +21,15 @@ public class Jugador {
 	public Date getNacimiento() {
 		return nacimiento;
 	}
-	public void setNacimiento(Date nacimiento) {
-		this.nacimiento = nacimiento;
+	public void setNacimiento(String fecha) {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
+		try {
+			nacimiento = sdf.parse(fecha);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 	public int getEdad() {
 		Date Hoy = new Date();
@@ -32,7 +43,7 @@ public class Jugador {
 		
 		int edad = HoyAnio - NacAnio;
 		
-		if (HoyMes < NacMes)||(HoyMes = NacMes) && (HoyDia < NacDia) {
+		if ((HoyMes < NacMes) || ((HoyMes == NacMes) && (HoyDia < NacDia))) {
 			edad--;
 		}
 		return edad;

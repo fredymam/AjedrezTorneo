@@ -15,11 +15,15 @@ import javax.swing.JButton;
 import java.awt.Color;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.DefaultComboBoxModel;
 
 public class Interfazarbitro extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField editnombre;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -64,6 +68,16 @@ public class Interfazarbitro extends JFrame {
 		panel.add(editnombre);
 		editnombre.setColumns(10);
 		
+		JPanel panel_3 = new JPanel();
+		contentPane.add(panel_3);
+		
+		JLabel lblNewLabel_2 = new JLabel("Apellido:");
+		panel_3.add(lblNewLabel_2);
+		
+		textField = new JTextField();
+		panel_3.add(textField);
+		textField.setColumns(10);
+		
 		JPanel panel_2 = new JPanel();
 		contentPane.add(panel_2);
 		
@@ -71,11 +85,23 @@ public class Interfazarbitro extends JFrame {
 		panel_2.add(lblCategorias);
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"A- (Mundial)", "B- (Continental)", "C- (Regional)", "D- (Inactivo)"}));
+		comboBox.setToolTipText("");
 		comboBox.setBackground(new Color(255, 255, 255));
 		panel_2.add(comboBox);
 		panel_2.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblCategorias, comboBox}));
 		
 		JButton btnNewButton = new JButton("Registrarse");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+					Arbitro referee;
+					
+					
+				
+				
+				
+			}
+		});
 		contentPane.add(btnNewButton);
 		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{contentPane, panel_1, lblNewLabel_1, panel, lblNewLabel, editnombre, panel_2, lblCategorias, comboBox, btnNewButton}));
 	}
