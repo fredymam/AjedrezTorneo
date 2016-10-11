@@ -8,6 +8,7 @@ public class Jugador {
 	private char sexo;
 	public String nombre;
 	private Date nacimiento;
+	public Double score;
 	public Jugador(String nombre) {
 		this.nombre = nombre;
 		nacimiento = new Date();

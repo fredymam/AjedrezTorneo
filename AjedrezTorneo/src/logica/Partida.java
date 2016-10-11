@@ -5,10 +5,23 @@ public class Partida {
 	private int Mesa;
 	private enum Resultado {BLANCAS, NEGRAS, NULL, UNDEFINE};
 	private Resultado resultado;
+	private Jugador jblancas;
+	private Jugador jnegras;
 	
-	public void partida(int Mesa, Jugador Blancas, Jugador Negras){
+	public void Partida(int Mesa, Jugador jblancas, Jugador jnegras){
 		this.Mesa = Mesa;
-	    
+		this.jblancas= jblancas;
+		this.jnegras= jnegras;
+	    resultado=Resultado.UNDEFINE;
+	}
+	public void setResultado (int Mesa, Resultado resultado){
+		if (resultado == Resultado.BLANCAS){
+			jblancas.score++;
+		}
+		if (resultado == Resultado.NEGRAS){
+			jnegras.score++;
+		}
+		if(resultado == Resultado.NULL)
 	}
 	
 
