@@ -2,13 +2,23 @@ package logica;
 
 public class Arbitro {
 	public string nombre;
+	public string apellido;
 	private char categoria;
 	public string getNombre() {
 		return nombre;
 	}
+	public string getApellido(){
+		return apellido;
+	}
+	
 	public void setNombre(string nombre) {
 		this.nombre = nombre;
 	}
+	
+	public void setApellido(string apellido){
+		this.apellido = apellido;
+	}
+	
 	public char getCategoria() {
 		return categoria;
 	}
