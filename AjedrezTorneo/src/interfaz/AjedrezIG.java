@@ -14,11 +14,15 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AjedrezIG {
 
 	private JFrame frame;
 	private JTextField textField;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -48,7 +52,7 @@ public class AjedrezIG {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 188, 228);
+		frame.setBounds(100, 100, 279, 228);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new GridLayout(6, 1, 0, 0));
 		
@@ -72,6 +76,18 @@ public class AjedrezIG {
 		JLabel lblNewLabel_2 = new JLabel("F.Nac");
 		panel_1.add(lblNewLabel_2);
 		
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"DD", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
+		panel_1.add(comboBox_1);
+		
+		JComboBox comboBox_2 = new JComboBox();
+		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"MM", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"}));
+		panel_1.add(comboBox_2);
+		
+		JComboBox comboBox_3 = new JComboBox();
+		comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"AAAA"}));
+		panel_1.add(comboBox_3);
+		
 	 
 		
 		JPanel panel_2 = new JPanel();
@@ -87,10 +103,21 @@ public class AjedrezIG {
 		JPanel panel_3 = new JPanel();
 		frame.getContentPane().add(panel_3);
 		
-		JLabel lblNewLabel_4 = new JLabel("ELO");
+		JLabel lblNewLabel_4 = new JLabel("ELO:");
 		panel_3.add(lblNewLabel_4);
 		
+		textField_1 = new JTextField();
+		panel_3.add(textField_1);
+		textField_1.setColumns(10);
+		
 		JButton btnNewButton = new JButton("Registrar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				
+			}
+		});
 		frame.getContentPane().add(btnNewButton);
 	}
 
