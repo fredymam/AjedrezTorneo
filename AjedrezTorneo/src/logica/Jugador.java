@@ -2,7 +2,9 @@ package logica;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar.*;
 import java.util.*;
+
 
 public class Jugador {
 	private char sexo;
@@ -10,8 +12,11 @@ public class Jugador {
 	private Date nacimiento;
 	public Double score;
 	public Jugador(String nombre) {
-		this.nombre = nombre;
-		nacimiento = new Date();
+		this.nombre = nombre;		
+	}
+	public Jugador(int NacDia, int NacMes, int NacAnio ){
+		//nacimiento = new Date(NacDia, NacMes, NacAnio);
+		Calendar.set(NacDia, NacMes, NacAnio);
 	}
 	public char getSexo() {
 		return sexo;
@@ -33,14 +38,16 @@ public class Jugador {
 
 	}
 	public int getEdad() {
-		Date Hoy = new Date();
-		int HoyAnio = Hoy.getYear();
-		int HoyMes = Hoy.getMonth();
-		int HoyDia = Hoy.getDate();
+		Calendar Hoy = Calendar.getInstance();
+		int HoyAnio = Hoy.get(Calendar.YEAR);
+		int HoyMes = Hoy.get(Calendar.MONTH);
+		int HoyDia = Hoy.get(Calendar.DAY_OF_MONTH);
 		
-		int NacAnio = nacimiento.getYear();
-		int NacMes = nacimiento.getMonth();
-		int NacDia = nacimiento.getDate();
+		Calendar Nac;
+		Nac.setTime(nacimiento);
+		int NacAnio = Nac.get(Calendar.YEAR);
+		int NacMes = Nac.get(Calendar.MONTH);
+		int NacDia = Nac.get(Calendar.DAY_OF_MONTH);
 		
 		int edad = HoyAnio - NacAnio;
 		
