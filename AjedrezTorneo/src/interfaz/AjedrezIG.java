@@ -23,7 +23,7 @@ public class AjedrezIG {
 	private JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
-
+	
 	/**
 	 * Launch the application.
 	 */
@@ -84,9 +84,13 @@ public class AjedrezIG {
 		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"MM", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"}));
 		panel_1.add(comboBox_2);
 		
-		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"AAAA"}));
-		panel_1.add(comboBox_3);
+		JComboBox comboanio = new JComboBox();
+		
+		for(int f=2016;f>=1900;f--) {	
+            comboanio.addItem(String.valueOf(f));
+        }
+        add(comboanio);
+		panel_1.add(comboanio);
 		
 	 
 		
@@ -119,6 +123,11 @@ public class AjedrezIG {
 			}
 		});
 		frame.getContentPane().add(btnNewButton);
+	}
+
+	private void add(JComboBox comboanio) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
