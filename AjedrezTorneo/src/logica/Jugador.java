@@ -10,7 +10,7 @@ public class Jugador {
 	private char sexo;
 	public String nombre;
 	private Date nacimiento;
-	public Double score;
+	public Double score =0.0;
 	public Jugador(String nombre) {
 		this.nombre = nombre;		
 	}

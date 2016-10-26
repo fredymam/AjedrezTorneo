@@ -1,8 +1,8 @@
 package logica;
 
-public class Partida {
+public class Partida{
 	private int Mesa;
-	private enum Resultado {BLANCAS, NEGRAS, NULL, UNDEFINE};
+	private enum Resultado {BLANCAS, NEGRAS, TABLAS, UNDEFINE};
 	private Resultado resultado;
 	private Jugador jblancas;
 	private Jugador jnegras;
@@ -20,7 +20,7 @@ public class Partida {
 		if (resultado == Resultado.NEGRAS){
 			jnegras.score++;
 		}
-		if(resultado == Resultado.NULL){
+		if(resultado == Resultado.TABLAS){
 			jnegras.score = jnegras.score + 0.5;
 			jblancas.score = jblancas.score + 0.5;
 		}
