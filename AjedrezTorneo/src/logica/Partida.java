@@ -1,6 +1,6 @@
 package logica;
 
-public class Partida {
+public class Partida extends JFrame {
 	private int Mesa;
 	private enum Resultado {BLANCAS, NEGRAS, NULL, UNDEFINE};
 	private Resultado resultado;
