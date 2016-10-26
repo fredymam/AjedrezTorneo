@@ -9,6 +9,9 @@ import javax.swing.JTable;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
+import logica.Jugador;
+
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -21,8 +24,8 @@ import java.awt.event.ActionEvent;
 public class AjedrezIG {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField jtexfield_nombre;
+	private JTextField jtexfield_elo;
 	
 	/**
 	 * Launch the application.
@@ -66,9 +69,9 @@ public class AjedrezIG {
 		JLabel lblNewLabel_1 = new JLabel("Nombre");
 		panel.add(lblNewLabel_1);
 		
-		textField = new JTextField();
-		panel.add(textField);
-		textField.setColumns(10);
+		jtexfield_nombre = new JTextField();
+		panel.add(jtexfield_nombre);
+		jtexfield_nombre.setColumns(10);
 		
 		JPanel panel_1 = new JPanel();
 		frame.getContentPane().add(panel_1);
@@ -110,13 +113,16 @@ public class AjedrezIG {
 		JLabel lblNewLabel_4 = new JLabel("ELO:");
 		panel_3.add(lblNewLabel_4);
 		
-		textField_1 = new JTextField();
-		panel_3.add(textField_1);
-		textField_1.setColumns(10);
+		jtexfield_elo = new JTextField();
+		panel_3.add(jtexfield_elo);
+		jtexfield_elo.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Registrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Jugador jugador = new Jugador ();
+				jugador.nombre = jtexfield_nombre.getText();
+				//jugador.
 				
 				
 				
