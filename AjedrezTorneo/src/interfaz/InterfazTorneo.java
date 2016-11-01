@@ -25,7 +25,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class InterfazTorneo extends JFrame {
-    public Torneo torneo;
+    private Torneo tournament;
 	private JPanel contentPane;
 	private JLabel lblNombre;
 	private JTextField textField_Nombre;
@@ -45,7 +45,7 @@ public class InterfazTorneo extends JFrame {
 	 * Create the frame.
 	 */
 	public InterfazTorneo(Torneo torneo) {
-		this.torneo = torneo;
+		tournament = torneo;
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -107,8 +107,8 @@ public class InterfazTorneo extends JFrame {
 		btnCrear = new JButton("Crear");
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			   torneo.setNombre("algo");
-			   
+			   tournament.setNombre(textField_Nombre.getText());
+			   // completar todos los datos
 			
 			}
 		});

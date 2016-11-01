@@ -17,6 +17,7 @@ import javax.swing.JMenu;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("serial")
 public class AjedrezTorneo extends JFrame {
 
 	private JPanel contentPane;
@@ -58,7 +59,10 @@ public class AjedrezTorneo extends JFrame {
 					tournament = new Torneo();
 					InterfazTorneo NuevoTorneo = new InterfazTorneo(tournament); 
 					NuevoTorneo.setVisible(true);					
-				} else JOptionPane.showMessageDialog(null,"Torneo Creado"); // Falta implementar Abrir
+				} else JOptionPane.showMessageDialog(null,"Torneo Creado"); // Falta implementar Abrir 
+				
+				//else JOptionPane.showMessageDialog(null, tournament.getNombre()); 
+				
 				
 				
 			}

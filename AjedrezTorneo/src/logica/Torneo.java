@@ -9,11 +9,13 @@ public class Torneo {
 	private enum Modalidad {SWISS,ROUNDROBIN};
 	private Modalidad modalidad;
 	private int nroJugadores;
-	private int nroRondas = 7;
-
+	private int nroRondas = 7;	
+	public ArrayList<Jugador> Participantes;
+	public ArrayList<Ronda> Rondas;
 	
 	public Torneo() {
 		modalidad = Modalidad.SWISS;
+		Participantes = new ArrayList<Jugador>();
 		
 				
 	}
