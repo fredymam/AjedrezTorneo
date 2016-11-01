@@ -7,7 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import interfaz.InterfazPartida;
 import interfaz.InterfazTorneo;
+import logica.Partida;
 import logica.Torneo;
 
 import javax.swing.JMenuBar;
@@ -22,6 +24,7 @@ public class AjedrezTorneo extends JFrame {
 
 	private JPanel contentPane;
     private Torneo tournament;
+    private Partida partidita;
 	/**
 	 * Launch the application.
 	 */
@@ -85,6 +88,16 @@ public class AjedrezTorneo extends JFrame {
 		
 		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Posiciones");
 		mnJugadores.add(mntmNewMenuItem_4);
+		
+		JMenuItem mntmResultados = new JMenuItem("Resultados");
+		mntmResultados.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				partidita = new Partida();
+				InterfazPartida InfoMesa = new InterfazPartida(partidita); 
+				InfoMesa.setVisible(true);
+			}
+		});
+		mnJugadores.add(mntmResultados);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

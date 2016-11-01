@@ -11,41 +11,26 @@ import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
+
+import logica.Partida;
+import logica.Partida.Resultado;
+
 import java.awt.Component;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Window.Type;
 
 public class InterfazPartida {
+	private Partida partidita;
 
 	private JFrame frmInfoPartida;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					InterfazPartida window = new InterfazPartida();
-					window.frmInfoPartida.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public InterfazPartida() {
+	public InterfazPartida(Partida partida) {
+		partidita = partida;
 		initialize();
 	}
+	
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		frmInfoPartida = new JFrame();
 		frmInfoPartida.setType(Type.UTILITY);
@@ -53,6 +38,7 @@ public class InterfazPartida {
 		frmInfoPartida.setBounds(100, 100, 450, 300);
 		frmInfoPartida.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frmInfoPartida.getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
+
 		
 		JPanel PanelMesa = new JPanel();
 		frmInfoPartida.getContentPane().add(PanelMesa);
@@ -68,7 +54,7 @@ public class InterfazPartida {
 		JPanel panel_2 = new JPanel();
 		PanelMesa2.add(panel_2);
 		
-		JLabel NumMesa = new JLabel("New label");
+		JLabel NumMesa = new JLabel("Informacion Mesa "+"");
 		PanelMesa2.add(NumMesa);
 		
 		JPanel panel_1 = new JPanel();
@@ -88,10 +74,11 @@ public class InterfazPartida {
 		JPanel Relleno = new JPanel();
 		PanelDefin.add(Relleno);
 		
-		JComboBox Definicion = new JComboBox();
+		final JComboBox Definicion = new JComboBox();
 		PanelDefin.add(Definicion);
 		Definicion.setModel(new DefaultComboBoxModel(new String[] {"1/2-1/2", "1-0", "0-1"}));
 		Definicion.setToolTipText("1-0\r\n0-1\r\n0-0");
+		
 		
 		JLabel Jugador2 = new JLabel("New label");
 		PanelDefinicion.add(Jugador2);
@@ -102,9 +89,24 @@ public class InterfazPartida {
 		JButton Confirmar = new JButton("Confirmar");
 		Confirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+                if (Definicion.getSelectedIndex() == 1){
+                	partidita.setResultado(Resultado.BLANCAS);
+					
+				} else if(Definicion.getSelectedIndex() == 2){
+					partidita.setResultado(Resultado.NEGRAS);
+				} else{
+					partidita.setResultado(Resultado.TABLAS);
+					
+				}
 			}
 		});
 		PanelConfirm.add(Confirmar);
+	}
+
+
+	public void setVisible(boolean b) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
