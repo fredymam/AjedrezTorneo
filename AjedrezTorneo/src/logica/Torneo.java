@@ -1,6 +1,6 @@
 package logica;
 
-import java.sql.Date;
+import java.util.*;
 
 public class Torneo {
 	private String Nombre;
@@ -16,6 +16,46 @@ public class Torneo {
 		modalidad = Modalidad.SWISS;
 		
 				
+	}
+
+
+	public String getNombre() {
+		return Nombre;
+	}
+
+
+	public void setNombre(String nombre) {
+		Nombre = nombre;
+	}
+
+
+	public Date getFecha() {
+		return Fecha;
+	}
+
+
+	public void setFecha(Date fecha) {
+		Fecha = fecha;
+	}
+
+
+	public String getLugar() {
+		return Lugar;
+	}
+
+
+	public void setLugar(String lugar) {
+		Lugar = lugar;
+	}
+
+
+	public Modalidad getModalidad() {
+		return modalidad;
+	}
+
+
+	public void setModalidad(Modalidad modalidad) {
+	    this.modalidad = modalidad;
 	}
 	
 }

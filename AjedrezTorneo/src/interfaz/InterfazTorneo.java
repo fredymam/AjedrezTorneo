@@ -5,8 +5,12 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import logica.Torneo;
+
 import java.awt.GridLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
@@ -17,12 +21,14 @@ import java.awt.GridBagConstraints;
 import javax.swing.JComboBox;
 import javax.swing.JTextPane;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class TorneoIG extends JFrame {
-
+public class InterfazTorneo extends JFrame {
+    public Torneo torneo;
 	private JPanel contentPane;
 	private JLabel lblNombre;
-	private JTextField textField;
+	private JTextField textField_Nombre;
 	private JLabel lblFecha;
 	private JTextField textField_1;
 	private JPanel botoncrear;
@@ -38,8 +44,9 @@ public class TorneoIG extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TorneoIG() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public InterfazTorneo(Torneo torneo) {
+		this.torneo = torneo;
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -60,9 +67,9 @@ public class TorneoIG extends JFrame {
 		lblNombre.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_1.add(lblNombre);
 		
-		textField = new JTextField();
-		panel_1.add(textField);
-		textField.setColumns(10);
+		textField_Nombre = new JTextField();
+		panel_1.add(textField_Nombre);
+		textField_Nombre.setColumns(10);
 		
 		lblFecha = new JLabel("Fecha");
 		lblFecha.setHorizontalAlignment(SwingConstants.CENTER);
@@ -98,7 +105,16 @@ public class TorneoIG extends JFrame {
 		contentPane.add(botoncrear);
 		
 		btnCrear = new JButton("Crear");
-		botoncrear.add(btnCrear);
+		btnCrear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			   torneo.setNombre("algo");
+			   
+			
+			}
+		});
+		botoncrear.add(btnCrear);		
 	}
+	
+	
 
 }

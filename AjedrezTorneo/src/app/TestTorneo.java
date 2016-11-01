@@ -1,10 +1,10 @@
 package app;
-import interfaz.TorneoIG;
+import interfaz.InterfazTorneo;
 
 public class TestTorneo {
 
 	public static void main(String[] args) {
-		TorneoIG torneo = new TorneoIG();
+		InterfazTorneo torneo = new InterfazTorneo();
 				
 
 	}
