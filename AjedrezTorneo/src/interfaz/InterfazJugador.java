@@ -19,9 +19,10 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
 import java.awt.event.ActionEvent;
 
-public class AjedrezIG {
+public class InterfazJugador {
 
 	private JFrame frame;
 	private JTextField jtexfield_nombre;
@@ -34,7 +35,7 @@ public class AjedrezIG {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AjedrezIG window = new AjedrezIG();
+					InterfazJugador window = new InterfazJugador();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +47,7 @@ public class AjedrezIG {
 	/**
 	 * Create the application.
 	 */
-	public AjedrezIG() {
+	public InterfazJugador() {
 		initialize();
 	}
 
@@ -88,8 +89,8 @@ public class AjedrezIG {
 		panel_1.add(comboBox_2);
 		
 		JComboBox comboanio = new JComboBox();
-		
-		for(int f=2016;f>=1900;f--) {	
+		Calendar Hoy = Calendar.getInstance();
+		for(int f= Hoy.get(Calendar.YEAR);f>=1900;f--) {	
             comboanio.addItem(String.valueOf(f));
         }
         add(comboanio);
@@ -120,10 +121,8 @@ public class AjedrezIG {
 		JButton btnNewButton = new JButton("Registrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Jugador jugador = new Jugador ();
-				jugador.nombre = jtexfield_nombre.getText();
-				//jugador.
-				
+				Jugador jugador = new Jugador(jtexfield_nombre.getText());
+				//jugador = new Jugador(jtexfield_elo.getText());
 				
 				
 			}
