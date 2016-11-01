@@ -1,7 +1,7 @@
 package logica;
 
 public class Arbitro {
-	public string nombre;
+	public String nombre;
 	public string apellido;
 	private char categoria;
 	public string getNombre() {
@@ -12,7 +12,7 @@ public class Arbitro {
 	}
 	
 	public void setNombre(string nombre) {
-		this.nombre = nombre;
+		Arbitro.nombre = nombre;
 	}
 	
 	public void setApellido(string apellido){
@@ -22,10 +22,6 @@ public class Arbitro {
 	public char getCategoria() {
 		return categoria;
 	}
-	private void setCategoria(char categoria) {
-		this.categoria = categoria;
-	}
-	
 	public void arbitro(){
 		switch (categoria){
 			case 'A':
