@@ -10,13 +10,28 @@ public class Jugador {
 	private char sexo;
 	public String nombre;
 	private Date nacimiento;
-	public Double score =0.0;
+	private int elo;
+	public Double score = 0.0;
 	public Jugador(String nombre) {
 		this.nombre = nombre;		
 	}
-	public Jugador(int NacDia, int NacMes, int NacAnio ){
-		//nacimiento = new Date(NacDia, NacMes, NacAnio);
-		Calendar.set(NacDia, NacMes, NacAnio);
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public int getElo() {
+		return elo;
+	}
+	public void setElo(int elo) {
+		this.elo = elo;
+	}
+	public Double getScore() {
+		return score;
+	}
+	public void setScore(Double score) {
+		this.score = score;
 	}
 	public char getSexo() {
 		return sexo;
@@ -28,7 +43,7 @@ public class Jugador {
 		return nacimiento;
 	}
 	public void setNacimiento(String fecha) {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
 		try {
 			nacimiento = sdf.parse(fecha);
 		} catch (ParseException e) {
@@ -38,16 +53,15 @@ public class Jugador {
 
 	}
 	public int getEdad() {
-		Calendar Hoy = Calendar.getInstance();
-		int HoyAnio = Hoy.get(Calendar.YEAR);
-		int HoyMes = Hoy.get(Calendar.MONTH);
-		int HoyDia = Hoy.get(Calendar.DAY_OF_MONTH);
+		Calendar Dia = Calendar.getInstance();
+		int HoyAnio = Dia.get(Calendar.YEAR);
+		int HoyMes = Dia.get(Calendar.MONTH);
+		int HoyDia = Dia.get(Calendar.DAY_OF_MONTH);
 		
-		Calendar Nac;
-		Nac.setTime(nacimiento);
-		int NacAnio = Nac.get(Calendar.YEAR);
-		int NacMes = Nac.get(Calendar.MONTH);
-		int NacDia = Nac.get(Calendar.DAY_OF_MONTH);
+		Dia.setTime(nacimiento);
+		int NacAnio = Dia.get(Calendar.YEAR);
+		int NacMes = Dia.get(Calendar.MONTH);
+		int NacDia = Dia.get(Calendar.DAY_OF_MONTH);
 		
 		int edad = HoyAnio - NacAnio;
 		
