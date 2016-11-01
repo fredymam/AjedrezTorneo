@@ -17,10 +17,10 @@ public class Partida{
 		if (resultado == Resultado.BLANCAS){
 			jblancas.score++;
 		}
-		if (resultado == Resultado.NEGRAS){
+		else if (resultado == Resultado.NEGRAS){
 			jnegras.score++;
 		}
-		if(resultado == Resultado.TABLAS){
+		else{
 			jnegras.score = jnegras.score + 0.5;
 			jblancas.score = jblancas.score + 0.5;
 		}
