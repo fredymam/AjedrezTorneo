@@ -5,6 +5,8 @@ public class Partida{
 	public enum Resultado {BLANCAS, NEGRAS, TABLAS, UNDEFINE};
 	public Resultado resultado;
 	private Jugador jblancas;
+	private Jugador jnegras;
+	
 	public int getMesa() {
 		return Mesa;
 	}
@@ -23,7 +25,7 @@ public class Partida{
 	public void setJnegras(Jugador jnegras) {
 		this.jnegras = jnegras;
 	}
-	private Jugador jnegras;
+	
 		
 	public void Partida(int Mesa, Jugador jblancas, Jugador jnegras){
 		this.Mesa = Mesa;
