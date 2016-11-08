@@ -1,12 +1,14 @@
 package logica;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Torneo {
 	private String Nombre;
 	private Date Fecha;
 	private String Lugar;
-	private enum Modalidad {SWISS,ROUNDROBIN};
+	public enum Modalidad {SWISS,ROUNDROBIN};
 	private Modalidad modalidad;
 	private int nroJugadores;
 	private int nroRondas = 7;	
@@ -35,10 +37,19 @@ public class Torneo {
 		return Fecha;
 	}
 
-
+	public void setFecha(String fecha) {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+		try {
+			fecha = sdf.parse(fecha);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+    /*
 	public void setFecha(Date fecha) {
 		Fecha = fecha;
-	}
+	} *///falta sobreescribir este metodo para nose string
 
 
 	public String getLugar() {
