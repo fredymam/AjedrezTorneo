@@ -1,4 +1,5 @@
 package interfaz;
+import java.awt.EventQueue;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -43,11 +44,23 @@ public class InterfazTorneo extends JFrame {
 	private JComboBox comboBox;
 	private JLabel lblNewLabel_1;
 	private JTextField textField;
+	private JFrame frame;
 
-
+	private void CrearTorneo(){
+		tournament.setNombre(textField_Nombre.getText());
+		// tournament.setFecha(lblFecha.getString());
+		   tournament.setLugar(textField_2.getText());
+		   if (Item.selectedIndex = 1);
+		   tournament.setModalidad(Torneo.Modalidad.ROUNDROBIN);
+		   else 
+		   tournament.setModalidad(Torneo.Modalidad.SWISS);
+		   
+		   // completar todos los datos
+	}
 	/**
 	 * Create the frame.
 	 */
+
 	public InterfazTorneo(Torneo torneo) {
 		setTitle("Ajedrez Torneo");
 		tournament = torneo;
@@ -109,8 +122,8 @@ public class InterfazTorneo extends JFrame {
 		panel_2.add(lblModalidad);
 		
 		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"", "Suizo", "Round Robin"}));
-		comboBox.setSelectedIndex(1);
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Suizo", "Round Robin"}));
+		comboBox.setSelectedIndex(0);
 		panel_2.add(comboBox);
 		
 		lblNewLabel_1 = new JLabel("Cantidad de Jugadores");
@@ -133,8 +146,7 @@ public class InterfazTorneo extends JFrame {
 		btnCrear.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			   tournament.setNombre(textField_Nombre.getText());
-			   // completar todos los datos
+			   CrearTorneo();   
 			
 			}
 		});

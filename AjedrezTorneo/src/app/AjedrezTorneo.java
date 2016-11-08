@@ -25,6 +25,7 @@ public class AjedrezTorneo extends JFrame {
 	private JPanel contentPane;
     private Torneo tournament;
     private Partida partidita;
+    
 	/**
 	 * Launch the application.
 	 */
@@ -65,9 +66,7 @@ public class AjedrezTorneo extends JFrame {
 				} else JOptionPane.showMessageDialog(null,"Torneo Creado"); // Falta implementar Abrir 
 				
 				//else JOptionPane.showMessageDialog(null, tournament.getNombre()); 
-				
-				
-				
+						
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem);
