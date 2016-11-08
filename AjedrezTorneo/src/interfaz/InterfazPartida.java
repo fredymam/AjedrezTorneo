@@ -28,6 +28,8 @@ public class InterfazPartida {
 	public InterfazPartida(Partida partida) {
 		partidita = partida;
 		initialize();
+		
+		frmInfoPartida.setVisible(true);
 	}
 	
 
@@ -54,7 +56,7 @@ public class InterfazPartida {
 		JPanel panel_2 = new JPanel();
 		PanelMesa2.add(panel_2);
 		
-		JLabel NumMesa = new JLabel("Informacion Mesa "+"");
+		JLabel NumMesa = new JLabel("Informacion Mesa "+ "");
 		PanelMesa2.add(NumMesa);
 		
 		JPanel panel_1 = new JPanel();
@@ -64,7 +66,7 @@ public class InterfazPartida {
 		frmInfoPartida.getContentPane().add(PanelDefinicion);
 		PanelDefinicion.setLayout(new GridLayout(1, 3, 0, 0));
 		
-		JLabel Jugador1 = new JLabel("New label");
+		JLabel Jugador1 = new JLabel("Jugador "+ partidita.getJblancas().nombre);
 		PanelDefinicion.add(Jugador1);
 		
 		JPanel PanelDefin = new JPanel();
@@ -80,7 +82,7 @@ public class InterfazPartida {
 		Definicion.setToolTipText("1-0\r\n0-1\r\n0-0");
 		
 		
-		JLabel Jugador2 = new JLabel("New label");
+		JLabel Jugador2 = new JLabel("Jugador " + partidita.getJnegras().nombre);
 		PanelDefinicion.add(Jugador2);
 		
 		JPanel PanelConfirm = new JPanel();

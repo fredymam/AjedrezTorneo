@@ -5,6 +5,24 @@ public class Partida{
 	public enum Resultado {BLANCAS, NEGRAS, TABLAS, UNDEFINE};
 	public Resultado resultado;
 	private Jugador jblancas;
+	public int getMesa() {
+		return Mesa;
+	}
+	public void setMesa(int mesa) {
+		Mesa = mesa;
+	}
+	public Jugador getJblancas() {
+		return jblancas;
+	}
+	public void setJblancas(Jugador jblancas) {
+		this.jblancas = jblancas;
+	}
+	public Jugador getJnegras() {
+		return jnegras;
+	}
+	public void setJnegras(Jugador jnegras) {
+		this.jnegras = jnegras;
+	}
 	private Jugador jnegras;
 		
 	public void Partida(int Mesa, Jugador jblancas, Jugador jnegras){
