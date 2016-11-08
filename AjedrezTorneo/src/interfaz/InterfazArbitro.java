@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridLayout;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
@@ -83,7 +85,7 @@ public class InterfazArbitro extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 					Arbitro Referee = new Arbitro();
 					Referee.nombre = JTextField_nombre.getText();
-							
+					//JOptionPane.			
 				}
 			
 		});
@@ -92,3 +94,4 @@ public class InterfazArbitro extends JFrame {
 	}
 
 }
+
