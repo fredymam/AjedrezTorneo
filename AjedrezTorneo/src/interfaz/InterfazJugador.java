@@ -27,23 +27,20 @@ public class InterfazJugador {
 	private JFrame frame;
 	private JTextField jtexfield_nombre;
 	private JTextField jtexfield_elo;
-	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					InterfazJugador window = new InterfazJugador();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	private JComboBox comboBox_sexo;
+	private void RegistrarJugador(){
+		Jugador jugador = new Jugador(jtexfield_nombre.getText());
+	//	jugador.setSexo(comboBox_sexo.getSelectedItem().toString());
+		if (comboBox_sexo.getSelectedIndex()==0){
+			jugador.setSexo('M');
+		}else {
+			jugador.setSexo('F');
+		}
+		jugador.setNacimiento(fecha);
+		jugador.setElo(elo);
+		
 	}
-
+	
 	/**
 	 * Create the application.
 	 */
@@ -104,9 +101,9 @@ public class InterfazJugador {
 		JLabel lblNewLabel_3 = new JLabel("Sexo");
 		panel_2.add(lblNewLabel_3);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"M", "F"}));
-		panel_2.add(comboBox);
+		comboBox_sexo = new JComboBox();
+		comboBox_sexo.setModel(new DefaultComboBoxModel(new String[] {"M", "F"}));
+		panel_2.add(comboBox_sexo);
 		
 		JPanel panel_3 = new JPanel();
 		frame.getContentPane().add(panel_3);
@@ -121,10 +118,8 @@ public class InterfazJugador {
 		JButton btnNewButton = new JButton("Registrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Jugador jugador = new Jugador(jtexfield_nombre.getText());
-				//jugador = new Jugador(jtexfield_elo.getText());
-				
-				
+				RegistrarJugador();
+			
 			}
 		});
 		frame.getContentPane().add(btnNewButton);
