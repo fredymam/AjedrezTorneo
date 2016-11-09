@@ -22,8 +22,8 @@ public class Partida{
 	public Jugador getJnegras() {
 		return jnegras;
 	}
-	public void setJnegras(Jugador jnegras) {
-		this.jnegras = jnegras;
+	public void setJnegras(Jugador i) {
+		this.jnegras = i;
 	}
 	
 		
@@ -45,6 +45,7 @@ public class Partida{
 			jblancas.score = jblancas.score + 0.5;
 		}
 	}
+	
 	
   
     

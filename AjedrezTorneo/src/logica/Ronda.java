@@ -3,17 +3,20 @@ package logica;
 import java.util.ArrayList;
 
 public class Ronda {
-	public enum Estado {PENDIENTE,ENCURSO,FINALIZADA};
+	
+ 	public enum Estado {PENDIENTE,ENCURSO,FINALIZADA};
 	private int ronda;
 	private Estado estado;
 	private Torneo torneo;
 	public  ArrayList<Partida> Partidas;
+	
 	
 	public Ronda(Torneo torneo, int ronda){
 		estado = Estado.PENDIENTE;
 		this.ronda = ronda;
 		this.torneo = torneo;
 		Partidas = new ArrayList<Partida>();
+		
 	}
 	
 	public void setResultado(int mesa, Partida.Resultado result) {
@@ -33,14 +36,20 @@ public class Ronda {
 	}
 	
 	public ArrayList<Partida> Pareo() { // Generar cruces (igual a la mitad de jugadores)
-	  for (int mesa=0;mesa<(torneo.Participantes.size()/2);mesa++) {
+	   int particip = (torneo.Participantes.size()/2);
+	   for (int mesa=0;mesa<particip ;mesa++) {
 		  Partida match = new Partida();
 		  match.setMesa(mesa+1);  // Determinar los rivales
-		  // match.setJblancas( ???);
-		  // match.setJnegras(???);
+		  match.setJblancas(torneo.Participantes.get(mesa));
+		  match.setJnegras(torneo.Participantes.get(particip + mesa));
 		  Partidas.add(match);
 	  }
 	  return Partidas;	
+	}
+
+	private Jugador particip(int i) {
+		// TODO Auto-generated method stub
+		return null;
 	}
    
 }
