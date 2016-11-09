@@ -2,7 +2,7 @@ package logica;
 
 import javax.swing.table.DefaultTableModel;
 
-public class Score {
+public class Score implements Comparable<Jugador> {
 	public final int colCount = 9;    // Cantidad de Columnas
 	public final int colPosicion = 0; // Constantes para utilizar el indice de cada columna
 	public final int colApellido = 1;
@@ -19,7 +19,7 @@ public class Score {
     private String[][] rowJugador;    // Arreglo de dos dimensiones para los datos de las filas.
     public DefaultTableModel tablaDatos; // Modelo de Datos -> Representación abstracta
     
-    public void Ordenar(){
+    public void Ordenar(){           
     	// 1. Ordenar por puntos
     	// 2. Ordenar por Desempate
     	// hint: Ver Interface Comparable y Clase Collections
@@ -51,8 +51,26 @@ public class Score {
 		   rowJugador[fila][colPosicion] = String.valueOf(fila + 1);
 		   rowJugador[fila][colNombre] = torneo.Participantes.get(fila).getNombre();
 		   rowJugador[fila][colPuntos] = String.valueOf(torneo.Participantes.get(fila).getScore());
+		   
 		   // completar columnas
 	   }
 	   return rowJugador;
+	}
+
+	@Override
+	public int compareTo(Jugador j1) {
+		if (getJugador < getJugador j1) {
+            return -1;
+        }else (getJugador > getJugador j1) {
+            return 1;
+        }else
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int compareTo(Jugador o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
