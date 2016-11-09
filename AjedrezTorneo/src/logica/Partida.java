@@ -1,9 +1,9 @@
 package logica;
 
 public class Partida{
-	private int Mesa;
 	public enum Resultado {BLANCAS, NEGRAS, TABLAS, UNDEFINE};
-	public Resultado resultado;
+	private int Mesa;
+	private Resultado resultado;
 	private Jugador jblancas;
 	private Jugador jnegras;
 	

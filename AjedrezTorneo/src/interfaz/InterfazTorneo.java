@@ -1,26 +1,16 @@
 package interfaz;
-import java.awt.EventQueue;
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import logica.Torneo;
-
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
-import javax.swing.JCheckBox;
 import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
 import javax.swing.JComboBox;
-import javax.swing.JTextPane;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -28,6 +18,9 @@ import javax.swing.border.BevelBorder;
 import java.awt.Color;
 import java.awt.Font;
 
+import logica.Torneo;
+
+@SuppressWarnings("serial")
 public class InterfazTorneo extends JFrame {
     private Torneo tournament;
 	private JPanel contentPane;
@@ -41,25 +34,25 @@ public class InterfazTorneo extends JFrame {
 	private JLabel lblNewLabel;
 	private JTextField textField_2;
 	private JLabel lblModalidad;
-	private JComboBox comboBox;
+	private JComboBox<String> comboBox_Modalidad;
 	private JLabel lblNewLabel_1;
 	private JTextField textField;
-	private JFrame frame;
 
 	private void CrearTorneo(){
 		tournament.setNombre(textField_Nombre.getText());
 		// tournament.setFecha(lblFecha.getString());
-		   tournament.setLugar(textField_2.getText());
-		   if (Item.selectedIndex = 1);
+		tournament.setLugar(textField_2.getText());
+		if (comboBox_Modalidad.getSelectedIndex()==0) {
 		   tournament.setModalidad(Torneo.Modalidad.ROUNDROBIN);
-		   else 
+		} else { 
 		   tournament.setModalidad(Torneo.Modalidad.SWISS);
-		   
-		   // completar todos los datos
+		}
+		// completar todos los datos
+		JOptionPane.showMessageDialog(null, "Torneo Registrado!");
+		setVisible(false); // Hace ventana invisible
+		dispose(); // Destruye ventana y libera recursos		
 	}
-	/**
-	 * Create the frame.
-	 */
+
 
 	public InterfazTorneo(Torneo torneo) {
 		setTitle("Ajedrez Torneo");
@@ -121,12 +114,12 @@ public class InterfazTorneo extends JFrame {
 		lblModalidad.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_2.add(lblModalidad);
 		
-		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Suizo", "Round Robin"}));
-		comboBox.setSelectedIndex(0);
-		panel_2.add(comboBox);
+		comboBox_Modalidad = new JComboBox<String>();
+		comboBox_Modalidad.setModel(new DefaultComboBoxModel<String>(new String[] {"Suizo", "Round Robin"}));
+		comboBox_Modalidad.setSelectedIndex(0);
+		panel_2.add(comboBox_Modalidad);
 		
-		lblNewLabel_1 = new JLabel("Cantidad de Jugadores");
+		lblNewLabel_1 = new JLabel("N\u00FAmero de Rondas");
 		lblNewLabel_1.setForeground(new Color(100, 149, 237));
 		lblNewLabel_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 14));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);

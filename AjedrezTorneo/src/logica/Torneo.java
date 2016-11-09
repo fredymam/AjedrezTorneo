@@ -5,23 +5,38 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Torneo {
+	public enum Modalidad {SWISS,ROUNDROBIN};
 	private String Nombre;
 	private Date Fecha;
 	private String Lugar;
-	public enum Modalidad {SWISS,ROUNDROBIN};
 	private Modalidad modalidad;
-	private int nroJugadores;
-	private int nroRondas = 7;	
-	public ArrayList<Jugador> Participantes;
+	private int NroRondas = 7;
+    public ArrayList<Jugador> Participantes;
 	public ArrayList<Ronda> Rondas;
+	public ArrayList<Arbitro> Arbitros;
+	
+	public int getNroJugadores() {
+		return Participantes.size();
+	}
+
+	public int getNroRondas() {
+		return NroRondas;
+	}
+	
+	public void setNroRondas(int rondas) {
+		NroRondas = rondas;
+	}
+	
+	public Score getScore() {
+		return new Score(this);
+	}
 	
 	public Torneo() {
 		modalidad = Modalidad.SWISS;
 		Participantes = new ArrayList<Jugador>();
-		
-				
+		Arbitros = new ArrayList<Arbitro>();
+		Rondas = new ArrayList<Ronda>();
 	}
-
 
 	public String getNombre() {
 		return Nombre;
@@ -40,16 +55,15 @@ public class Torneo {
 	public void setFecha(String fecha) {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
 		try {
-			fecha = sdf.parse(fecha);
+			this.Fecha = sdf.parse(fecha);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
 	
-    /*
 	public void setFecha(Date fecha) {
-		Fecha = fecha;
-	} *///falta sobreescribir este metodo para nose string
+		this.Fecha = fecha;
+	}
 
 
 	public String getLugar() {

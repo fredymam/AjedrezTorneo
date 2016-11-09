@@ -5,13 +5,11 @@ import logica.Jugador;
 public class TestInterfazPartida {
 
 	public static void main(String[] args) {
-		InterfazPartida ventanita;
-		Partida partida1 = new Partida();
-		partida1.setJblancas(new Jugador("Maria"));
-		partida1.setJnegras(new Jugador("pedra"));
-		partida1.setMesa(1);
-		ventanita = new InterfazPartida(partida1);
-
+		Partida match = new Partida();
+		match.setJblancas(new Jugador("Maria"));
+		match.setJnegras(new Jugador("pedra"));
+		match.setMesa(1);
+		InterfazPartida ventanita = new InterfazPartida(match);
 	}
 
 }

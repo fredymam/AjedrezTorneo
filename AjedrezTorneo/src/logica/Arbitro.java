@@ -1,40 +1,37 @@
 package logica;
 
 public class Arbitro {
-	public String nombre;
-	public string apellido;
+	private String nombre;
+	private String apellido;
 	private char categoria;
-	public string getNombre() {
+	
+	public String getNombre() {
 		return nombre;
 	}
-	public string getApellido(){
+	
+	public String getApellido(){
 		return apellido;
 	}
 	
-	public void setNombre(string nombre) {
-		Arbitro.nombre = nombre;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	
-	public void setApellido(string apellido){
+	public void setApellido(String apellido){
 		this.apellido = apellido;
 	}
 	
 	public char getCategoria() {
 		return categoria;
 	}
-	public void arbitro(){
-		switch (categoria){
-			case 'A':
-			    System.out.println("arbitro mundial"); break;
-			case 'B':
-				System.out.println("arbitro continental"); break;
-			case 'C':
-				System.out.println("arbitro regional"); break;
-			case 'D':
-				System.out.println("arbitro inactivo"); break;
-				
-			
-		}
+	
+	public void setCategoria(char Cat) {
+		categoria = Cat;
 	}
 	
+	public Arbitro(String Nombre, String Apellido) {
+		this.nombre = Nombre;
+		this.apellido  = Apellido;
+	}
+			
 }

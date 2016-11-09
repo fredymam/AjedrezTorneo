@@ -1,58 +1,35 @@
 package interfaz;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-import javax.swing.JTabbedPane;
-import java.awt.BorderLayout;
-import javax.swing.JTable;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
-
-import logica.Jugador;
-
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
-import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.awt.event.ActionEvent;
 
-public class InterfazJugador {
+import logica.Jugador;
+import logica.Torneo;
 
-	private JFrame frame;
+public class InterfazJugador {
+	private Torneo tournament;
 	private JTextField jtexfield_nombre;
 	private JTextField jtexfield_elo;
-	private JComboBox comboBox_sexo;
-	private void RegistrarJugador(){
-		Jugador jugador = new Jugador(jtexfield_nombre.getText());
-	//	jugador.setSexo(comboBox_sexo.getSelectedItem().toString());
-		if (comboBox_sexo.getSelectedIndex()==0){
-			jugador.setSexo('M');
-		}else {
-			jugador.setSexo('F');
-		}
-		jugador.setNacimiento(fecha);
-		jugador.setElo(elo);
-		
-	}
+	private JComboBox<String> comboBox_sexo;
 	
-	/**
-	 * Create the application.
-	 */
-	public InterfazJugador() {
+	public InterfazJugador(Torneo torneo) {
+		tournament = torneo;
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
-		frame = new JFrame();
+		JFrame frame = new JFrame();
 		frame.setBounds(100, 100, 279, 228);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new GridLayout(6, 1, 0, 0));
@@ -77,23 +54,21 @@ public class InterfazJugador {
 		JLabel lblNewLabel_2 = new JLabel("F.Nac");
 		panel_1.add(lblNewLabel_2);
 		
-		JComboBox comboBox_1 = new JComboBox();
+		JComboBox<String> comboBox_1 = new JComboBox<String>();
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"DD", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
 		panel_1.add(comboBox_1);
 		
-		JComboBox comboBox_2 = new JComboBox();
+		JComboBox<String> comboBox_2 = new JComboBox<String>();
 		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"MM", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"}));
 		panel_1.add(comboBox_2);
 		
-		JComboBox comboanio = new JComboBox();
+		JComboBox<String> comboanio = new JComboBox<String>();
 		Calendar Hoy = Calendar.getInstance();
 		for(int f= Hoy.get(Calendar.YEAR);f>=1900;f--) {	
             comboanio.addItem(String.valueOf(f));
         }
         add(comboanio);
-		panel_1.add(comboanio);
-		
-	 
+		panel_1.add(comboanio); 
 		
 		JPanel panel_2 = new JPanel();
 		frame.getContentPane().add(panel_2);
@@ -103,6 +78,7 @@ public class InterfazJugador {
 		
 		comboBox_sexo = new JComboBox();
 		comboBox_sexo.setModel(new DefaultComboBoxModel(new String[] {"M", "F"}));
+		comboBox_sexo.setSelectedIndex(2);
 		panel_2.add(comboBox_sexo);
 		
 		JPanel panel_3 = new JPanel();
@@ -118,8 +94,7 @@ public class InterfazJugador {
 		JButton btnNewButton = new JButton("Registrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				RegistrarJugador();
-			
+				RegistrarJugador();			
 			}
 		});
 		frame.getContentPane().add(btnNewButton);
@@ -128,6 +103,18 @@ public class InterfazJugador {
 	private void add(JComboBox comboanio) {
 		// TODO Auto-generated method stub
 		
+	}
+	private void RegistrarJugador(){
+		Jugador jugador = new Jugador(jtexfield_nombre.getText());
+		if (comboBox_sexo.getSelectedIndex()==0){
+			jugador.setSexo('M');
+		} else {
+			jugador.setSexo('F');
+		}
+	//	jugador.setNacimiento( ?? );
+	//	jugador.setElo( ?? );
+		tournament.Participantes.add(jugador);
+		JOptionPane.showMessageDialog(null, "Jugador Registrado");
 	}
 
 }
