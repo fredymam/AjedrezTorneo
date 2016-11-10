@@ -54,16 +54,35 @@ public class InterfazTorneo extends JFrame {
 		} else { 
 		   tournament.setModalidad(Torneo.Modalidad.SWISS);
 		}
-		 /*if (comboBox_des1.getSelectedIndex!=0) {
+		
+		/* if (comboBox_des1.getSelectedIndex!=0) {
 			switch (comboBox_des1.getSelectedIndex)
-				case 1 : ;
+				case '1' : 1;
 				         break;
-				case 2 : sad;
+				case '2' : 2;
 				         break;
-				case 3 :         
-			      
-			
-		} */
+				case '3' : 3;       	      
+		} 
+		 
+		if (comboBox_des2.getSelectedIndex!=0) {
+			switch (comboBox_des2.getSelectedIndex)
+				case '1' : 1;
+				         break;
+				case '2' : 2;
+				         break;
+				case '3' : 3;        	
+		} 
+		
+		if (comboBox_des3.getSelectedIndex!=0) {
+			switch (comboBox_des3.getSelectedIndex)
+				case '1' : 1;
+				         break;
+				case '2' : 2;
+				         break;
+				case '3' : 3;        	
+		} 
+		
+		*/
 		
 		// completar todos los datos
 		JOptionPane.showMessageDialog(null, "Torneo Registrado!");
