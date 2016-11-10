@@ -57,16 +57,8 @@ public class Score implements Comparable<Jugador> {
 	   return rowJugador;
 	}
 
-	@Override
-	public int compareTo(Jugador j1) {
-		if (getJugador < getJugador j1) {
-            return -1;
-        }else (getJugador > getJugador j1) {
-            return 1;
-        }else
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
+	
 
 	@Override
 	public int compareTo(Jugador o) {

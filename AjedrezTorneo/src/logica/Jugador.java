@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 
-public class Jugador {
+public class Jugador implements Comparable<Score>{
 	private char sexo;
 	private String nombre;
 	private Date nacimiento;
@@ -92,4 +92,17 @@ public class Jugador {
 		return "Mayor";
 	}
 	
+	
+	@Override
+	public int compareTo(Score o) {
+			 (this.Score < o.Score ); {
+	            return -1;
+	        }else (this.Score > o.Score); {
+	            return 1;
+	        }else{
+	        	
+			return desempate1;
+		}
+	
+	}
 }
