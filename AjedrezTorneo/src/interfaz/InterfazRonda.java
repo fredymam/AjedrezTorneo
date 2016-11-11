@@ -7,11 +7,14 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class InterfazRonda {
     private Ronda round;
 	private JFrame frmInfoRonda;
 	private JComboBox<String> NumRonda;
+	private int ronda;
 
 	
 	public InterfazRonda(Ronda ronda) {
@@ -37,15 +40,18 @@ public class InterfazRonda {
 		frmInfoRonda.getContentPane().add(NumRonda);
 		
 		JButton btnCargar = new JButton("Cargar");
+		btnCargar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setRonda();
+			}
+		});
 		btnCargar.setBounds(258, 42, 89, 23);
 		frmInfoRonda.getContentPane().add(btnCargar);
 	}
-
-	public JComboBox<String> getNumRonda() {
-		return NumRonda;
+	public void setRonda(){
+		if (NumRonda.getSelectedIndex()== 1){
+			round.setRonda(ronda++);
+		}
 	}
-
-	public void setNumRonda(JComboBox<String> numRonda) {
-		NumRonda = numRonda;
-	}
+	
 }

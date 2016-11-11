@@ -99,6 +99,7 @@ public class InterfazPartida {
 			Match.setResultado(Resultado.TABLAS);			
 		}
 		JOptionPane.showMessageDialog(null, "Registrado");
+		System.exit(0);
 		// Cerrar ventana --> hint: invisible & dispose
 	}
 

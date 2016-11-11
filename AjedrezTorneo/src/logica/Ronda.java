@@ -5,9 +5,10 @@ import java.util.ArrayList;
 public class Ronda {
 	
  	public enum Estado {PENDIENTE,ENCURSO,FINALIZADA};
-	private int ronda;
+	private int ronda =0;
 	private Estado estado;
 	private Torneo torneo;
+	private int rondita;
 	public  ArrayList<Partida> Partidas;
 	
 	
@@ -18,7 +19,6 @@ public class Ronda {
 		Partidas = new ArrayList<Partida>();
 		
 	}
-	
 	public void setResultado(int mesa, Partida.Resultado result) {
 		Partidas.get(mesa-1).setResultado(result);	  
 	}
@@ -37,6 +37,8 @@ public class Ronda {
 	
 	public ArrayList<Partida> Pareo() { // Generar cruces (igual a la mitad de jugadores)
 	   int particip = (torneo.Participantes.size()/2);
+	   
+	if (ronda == 1){
 	   for (int mesa=0;mesa<particip ;mesa++) {
 		  Partida match = new Partida();
 		  match.setMesa(mesa+1);  // Determinar los rivales
@@ -44,6 +46,7 @@ public class Ronda {
 		  match.setJnegras(torneo.Participantes.get(particip + mesa));
 		  Partidas.add(match);
 	  }
+	   }
 	  return Partidas;	
 	}
 
