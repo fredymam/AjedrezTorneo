@@ -65,4 +65,5 @@ public class Score implements Comparable<Jugador> {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 }

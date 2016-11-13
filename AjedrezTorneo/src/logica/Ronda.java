@@ -37,8 +37,6 @@ public class Ronda {
 	
 	public ArrayList<Partida> Pareo() { // Generar cruces (igual a la mitad de jugadores)
 	   int particip = (torneo.Participantes.size()/2);
-	   
-	if (ronda == 1){
 	   for (int mesa=0;mesa<particip ;mesa++) {
 		  Partida match = new Partida();
 		  match.setMesa(mesa+1);  // Determinar los rivales
@@ -46,7 +44,6 @@ public class Ronda {
 		  match.setJnegras(torneo.Participantes.get(particip + mesa));
 		  Partidas.add(match);
 	  }
-	   }
 	  return Partidas;	
 	}
 

@@ -83,12 +83,23 @@ public class InterfazPartida {
 		JButton Confirmar = new JButton("Confirmar");
 		Confirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+                Ganador();
                 setResultado();
+				//setResultado();
 			}
 		});
 		PanelConfirm.add(Confirmar);
 	}
-	
+	public void Ganador(){
+		if (Definicion.getSelectedIndex() == 1){
+			JOptionPane.showMessageDialog(null, "Ganador: " + Match.getJblancas().getNombre());
+		} 
+		else if(Definicion.getSelectedIndex() == 2){
+			JOptionPane.showMessageDialog(null, "Ganador: " + Match.getJnegras().getNombre());
+		} else {
+			JOptionPane.showMessageDialog(null, "Empate");			
+	}
+	}
 	public void setResultado() {
 		if (Definicion.getSelectedIndex() == 1){
         	Match.setResultado(Resultado.BLANCAS);
@@ -98,7 +109,6 @@ public class InterfazPartida {
 		} else {
 			Match.setResultado(Resultado.TABLAS);			
 		}
-		JOptionPane.showMessageDialog(null, "Registrado");
 		System.exit(0);
 		// Cerrar ventana --> hint: invisible & dispose
 	}
