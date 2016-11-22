@@ -13,6 +13,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import logica.Torneo;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 @SuppressWarnings("serial")
 public class InterfazScore extends JFrame {
@@ -39,7 +41,8 @@ public class InterfazScore extends JFrame {
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		contentPane.add(scrollPane, BorderLayout.CENTER);
 		
-		table = new JTable(torneo.getScore().tablaDatos);   // Tabla visual del listado de jugadores y posiciones
+		table = new JTable(torneo.getScore().tablaDatos);
+		table.setBackground(new Color(250, 235, 215));
 		scrollPane.setViewportView(table);
 		setVisible(true);
 	}

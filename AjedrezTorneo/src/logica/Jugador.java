@@ -24,6 +24,12 @@ public class Jugador implements Comparable<Score>{
 		this.nombre = nombre;
 	}
 	
+
+	
+	
+	
+	
+	
 	public int getElo() {
 		return elo;
 	}

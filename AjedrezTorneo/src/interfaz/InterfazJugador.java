@@ -16,12 +16,16 @@ import java.awt.event.ActionEvent;
 
 import logica.Jugador;
 import logica.Torneo;
+import java.awt.Color;
+import java.awt.SystemColor;
+import java.awt.Font;
 
 public class InterfazJugador {
 	private Torneo tournament;
 	private JTextField jtexfield_nombre;
 	private JTextField jtexfield_elo;
 	private JComboBox<String> comboBox_sexo;
+	private JTextField jtexfield_apellido;
 	
 	public InterfazJugador(Torneo torneo) {
 		tournament = torneo;
@@ -30,11 +34,16 @@ public class InterfazJugador {
 
 	private void initialize() {
 		JFrame frame = new JFrame();
-		frame.setBounds(100, 100, 279, 228);
+		frame.getContentPane().setForeground(new Color(0, 0, 0));
+		frame.getContentPane().setBackground(new Color(154, 205, 50));
+		frame.setBounds(100, 100, 322, 347);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new GridLayout(6, 1, 0, 0));
 		
-		JLabel lblNewLabel = new JLabel("Jugador");
+		JLabel lblNewLabel = new JLabel("JUGADOR");
+		lblNewLabel.setFont(new Font("Bookman Old Style", Font.BOLD, 12));
+		lblNewLabel.setForeground(new Color(0, 0, 0));
+		lblNewLabel.setBackground(SystemColor.textHighlight);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		frame.getContentPane().add(lblNewLabel);
 		
@@ -42,16 +51,26 @@ public class InterfazJugador {
 		frame.getContentPane().add(panel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Nombre");
+		lblNewLabel_1.setFont(new Font("Bookman Old Style", Font.BOLD, 12));
 		panel.add(lblNewLabel_1);
 		
 		jtexfield_nombre = new JTextField();
 		panel.add(jtexfield_nombre);
 		jtexfield_nombre.setColumns(10);
 		
+		JLabel lblApellido = new JLabel("Apellido");
+		lblApellido.setFont(new Font("Bookman Old Style", Font.BOLD, 12));
+		panel.add(lblApellido);
+		
+		jtexfield_apellido = new JTextField();
+		panel.add(jtexfield_apellido);
+		jtexfield_apellido.setColumns(10);
+		
 		JPanel panel_1 = new JPanel();
 		frame.getContentPane().add(panel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("F.Nac");
+		lblNewLabel_2.setFont(new Font("Bookman Old Style", Font.BOLD, 12));
 		panel_1.add(lblNewLabel_2);
 		
 		JComboBox<String> comboBox_1 = new JComboBox<String>();
@@ -74,6 +93,7 @@ public class InterfazJugador {
 		frame.getContentPane().add(panel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Sexo");
+		lblNewLabel_3.setFont(new Font("Bookman Old Style", Font.BOLD, 12));
 		panel_2.add(lblNewLabel_3);
 		
 		comboBox_sexo = new JComboBox();
@@ -85,6 +105,7 @@ public class InterfazJugador {
 		frame.getContentPane().add(panel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("ELO:");
+		lblNewLabel_4.setFont(new Font("Bookman Old Style", Font.BOLD, 12));
 		panel_3.add(lblNewLabel_4);
 		
 		jtexfield_elo = new JTextField();
@@ -92,6 +113,7 @@ public class InterfazJugador {
 		jtexfield_elo.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Registrar");
+		btnNewButton.setFont(new Font("Bookman Old Style", Font.BOLD, 12));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				RegistrarJugador();			
