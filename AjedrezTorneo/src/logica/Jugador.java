@@ -5,12 +5,17 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 
-public class Jugador implements Comparable<Score>{
+public class Jugador implements Comparable<Jugador>{
 	private char sexo;
 	private String nombre;
+	private String apellido;
 	private Date nacimiento;
 	private int elo;
-	public Double score = 0.0;
+	public double score = 0.0;
+	public double Desempate1;
+	public double Desempate2;
+	public double Desempate3;
+	public ArrayList<Partida> juegos;
 	
 	public Jugador(String nombre) {
 		this.nombre = nombre;		
@@ -22,13 +27,15 @@ public class Jugador implements Comparable<Score>{
 	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}	
+	
+	public String getApellido() {
+		return apellido;
 	}
 	
-
-	
-	
-	
-	
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}	
 	
 	public int getElo() {
 		return elo;
@@ -38,7 +45,7 @@ public class Jugador implements Comparable<Score>{
 		this.elo = elo;
 	}
 	
-	public Double getScore() {
+	public double getScore() {
 		return score;
 	}
 	
@@ -57,6 +64,32 @@ public class Jugador implements Comparable<Score>{
 	public Date getNacimiento() {
 		return nacimiento;
 	}
+	
+	public double getDesempate1(){
+		return Desempate1;
+	}
+	
+	public double setDesempate1(double Desempate1){
+		return Desempate1;
+	}
+	
+	public double getDesempate2(){
+		return Desempate2;
+	}
+	
+	public double setDesempate2(double Desempate2){
+		return Desempate2;
+	}
+	
+	public double getDesempate3(){
+		return Desempate3;
+	}
+	
+	public double setDesempate3(double Desempate3){
+		return Desempate3;
+	}
+	
+	
 	
 	public void setNacimiento(String fecha) {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
@@ -100,15 +133,8 @@ public class Jugador implements Comparable<Score>{
 	
 	
 	@Override
-	public int compareTo(Score o) {
-			 (this.Score < o.Score ); {
-	            return -1;
-	        }else (this.Score > o.Score); {
-	            return 1;
-	        }else{
-	        	
-			return desempate1;
-		}
-	
+	public int compareTo(Jugador rival) {
+		return nombre.compareTo(rival.getNombre());
 	}
+	
 }
