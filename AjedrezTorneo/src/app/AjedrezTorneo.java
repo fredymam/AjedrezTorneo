@@ -42,12 +42,16 @@ public class AjedrezTorneo extends JFrame {
 		tournament.setLugar("Colegio Secundario E.P.E.T. Nro. 3");
 		tournament.setFecha("15/11/2016");
 		tournament.Participantes.add(new Jugador("Alexander Alekhine"));
-		tournament.Participantes.add(new Jugador("Anatoly Karpov"));
+		Jugador jugador1 = new Jugador("Anatoly Karpov");
+		jugador1.score = 3;
+		tournament.Participantes.add(jugador1);
 		tournament.Participantes.add(new Jugador("Garry Kasparov"));
 		tournament.Participantes.add(new Jugador("Emanuel Lasker"));
 		tournament.Participantes.add(new Jugador("José Raúl Capablanca"));
 		tournament.Participantes.add(new Jugador("Paul Morphy"));	
-		tournament.Participantes.add(new Jugador("Bobby Fisher"));
+		Jugador jugador2 = new Jugador("Bobby Fisher");
+		jugador2.score = 5;		
+		tournament.Participantes.add(jugador2);
 		tournament.Participantes.add(new Jugador("Magnus Carlsen"));
 		tournament.Participantes.add(new Jugador("Viswanathan Anand"));	
 		tournament.Participantes.add(new Jugador("Hikaru Nakamura"));

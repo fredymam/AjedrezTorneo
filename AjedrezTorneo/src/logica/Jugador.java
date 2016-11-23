@@ -5,12 +5,16 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 
-public class Jugador implements Comparable<Score>{
+public class Jugador implements Comparable<Jugador>{
 	private char sexo;
 	private String nombre;
 	private Date nacimiento;
 	private int elo;
-	public Double score = 0.0;
+	public double score = 0.0;
+	public double desempate1;
+	public double desempate2;
+	public double desempate3;
+	public ArrayList<Partida> juegos;
 	
 	public Jugador(String nombre) {
 		this.nombre = nombre;		
@@ -22,13 +26,7 @@ public class Jugador implements Comparable<Score>{
 	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-	
-
-	
-	
-	
-	
+	}	
 	
 	public int getElo() {
 		return elo;
@@ -100,15 +98,8 @@ public class Jugador implements Comparable<Score>{
 	
 	
 	@Override
-	public int compareTo(Score o) {
-			 (this.Score < o.Score ); {
-	            return -1;
-	        }else (this.Score > o.Score); {
-	            return 1;
-	        }else{
-	        	
-			return desempate1;
-		}
-	
+	public int compareTo(Jugador rival) {
+		return nombre.compareTo(rival.getNombre());
 	}
+	
 }
