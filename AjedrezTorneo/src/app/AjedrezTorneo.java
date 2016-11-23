@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import interfaz.InterfazListadoJugadores;
 import interfaz.InterfazPartida;
 import interfaz.InterfazScore;
 import interfaz.InterfazTorneo;
@@ -54,6 +55,10 @@ public class AjedrezTorneo extends JFrame {
 	}
 	public void listarJugadores() {
 		// Mostrar lista de jugadores en una tabla y botones para agregar/modificar y eliminar
+		if (tournament!=null) {
+			InterfazListadoJugadores posiciones = new InterfazListadoJugadores(tournament);
+		} else { JOptionPane.showMessageDialog(null, "No existe un torneo registrado.");
+		}
 	}
 	
 	public void Apareamiento() {

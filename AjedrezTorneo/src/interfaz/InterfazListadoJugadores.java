@@ -21,6 +21,16 @@ import javax.swing.border.EmptyBorder;
 import logica.Torneo;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JSeparator;
+import javax.swing.JScrollBar;
+import javax.swing.JButton;
+import javax.swing.BoxLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.GridLayout;
+
+import logica.ListadoJugadores;
 
 @SuppressWarnings("serial")
 public class InterfazListadoJugadores extends JFrame {
@@ -28,8 +38,8 @@ public class InterfazListadoJugadores extends JFrame {
 	private JTable table;              // Tabla Visual
     private JScrollPane scrollPane;	   // Scrollbar (Barras de desplazamiento)
     private JLabel lblPosiciones;      // Titulo
-    private JPanel panel;
-    private JComboBox comboBox;
+    private JButton Agregar;
+    private JButton Eliminar;
   
 	public InterfazListadoJugadores(Torneo torneo) {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -38,25 +48,42 @@ public class InterfazListadoJugadores extends JFrame {
 		contentPane = new JPanel();    // Panel Principal -> body
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		lblPosiciones = new JLabel("Posiciones"); // Etiqueta de Titulo
+		lblPosiciones = new JLabel("Posiciones");
+		contentPane.add(lblPosiciones);
 		lblPosiciones.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblPosiciones.setHorizontalAlignment(SwingConstants.CENTER);
-		contentPane.add(lblPosiciones, BorderLayout.NORTH);
+		
+		Eliminar = new JButton("Eliminar");
+		Eliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		scrollPane = new JScrollPane();  // Barra de desplazamiento
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setToolTipText("");
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		contentPane.add(scrollPane, BorderLayout.CENTER);
+		contentPane.add(scrollPane);
 		
-		table = new JTable(torneo.getScore().tablaDatos);   // Tabla visual del listado de jugadores y posiciones
+		table = new JTable(new DefaultTableModel(
+			new Object[][] {
+				{null, null, "", "", ""},
+			},
+			new String[] {
+				"Nombre", "Categoria", "Sexo", "Elo", "Fecha de nacimiento"
+			}
+		));   // Tabla visual del listado de jugadores y posiciones
+		table.setToolTipText("");
 		scrollPane.setViewportView(table);
+		contentPane.add(Eliminar);
 		
-		panel = new JPanel();
-		scrollPane.setColumnHeaderView(panel);
+		Agregar = new JButton("Agregar");
+		Agregar.addActionListener(new ActionListener()) {
+		contentPane.add(Agregar);
 		
-		comboBox = new JComboBox();
-		scrollPane.setColumnHeaderView(comboBox);
+
 		setVisible(true);
 	}
 }
