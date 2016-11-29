@@ -11,9 +11,11 @@ import interfaz.InterfazListadoJugadores;
 import interfaz.InterfazPartida;
 import interfaz.InterfazScore;
 import interfaz.InterfazTorneo;
+import interfaz.InterfazRonda;
 import logica.Jugador;
 import logica.Partida;
 import logica.Torneo;
+import logica.Ronda;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -28,6 +30,7 @@ public class AjedrezTorneo extends JFrame {
 	
     private Torneo tournament;
     private Partida match;
+
     
 	public void nuevoTorneo() {
 		if (tournament==null) {
@@ -80,8 +83,9 @@ public class AjedrezTorneo extends JFrame {
 		 * 2    CARLSEN      0-1      NAKAMURA
 		 */
 		if (tournament!=null) {
-			//InterfazRonda ronda = new InterfazRonda(tournament);
-		} 
+			InterfazRonda apare = new InterfazRonda(tournament);
+		} else { JOptionPane.showMessageDialog(null, "No existe un torneo registrado.");
+		}
 	}
 	
 	public void mostrarResultados(){

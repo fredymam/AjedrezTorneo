@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Ronda {
 	
  	public enum Estado {PENDIENTE,ENCURSO,FINALIZADA};
-	private int ronda =0;
+	private int ronda;
 	private Estado estado;
 	private Torneo torneo;
 	private int rondita;

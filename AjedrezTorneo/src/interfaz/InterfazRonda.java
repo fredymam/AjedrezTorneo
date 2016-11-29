@@ -24,6 +24,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.GridLayout;
 public class InterfazRonda {
 	private Ronda rondita;
@@ -31,6 +32,7 @@ public class InterfazRonda {
 	private JComboBox NumRonda;
 	private int ronda;
 	private JPanel panel;
+	
 	
 
 	
@@ -50,6 +52,7 @@ public class InterfazRonda {
 		frmInfoRonda.getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
 		
 		panel = new JPanel();
+		panel.setBackground(new Color(0, 191, 255));
 		frmInfoRonda.getContentPane().add(panel);
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
@@ -57,17 +60,30 @@ public class InterfazRonda {
 		panel.add(lblRondaN);
 		
 		NumRonda = new JComboBox();
+		NumRonda.setForeground(new Color(0, 255, 255));
 		NumRonda.setModel(new DefaultComboBoxModel(new String[] {"", "1", "2"}));
 		panel.add(NumRonda);
 		
 		setRonda();
+		
 		JButton btnCargar = new JButton("Cargar");
+		btnCargar.setBackground(new Color(0, 139, 139));
 		btnCargar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setRonda();
+				//JOptionPane.showMessageDialog(null ,);
+				//setRonda();
+				
 			}
 		});
 		panel.add(btnCargar);
+		
+		JButton button = new JButton("Cerrar");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+			}
+		});
+		panel.add(button);
 		
 		;
 	}
@@ -76,29 +92,31 @@ public class InterfazRonda {
 		
 	}
 	public void setRonda(){
-	/*	if (NumRonda.getSelectedIndex()== 1){
-			for(int estado=0; estado<rondita.Partidas.size();estado++){*/
+		/*if (NumRonda.getSelectedIndex()== 1){*/
+			for(int estado=0; estado<1 ;estado++ ){//rondita.Partidas.size();estado++){
+				//MESA 1
+				//JOptionPane.showMessageDialog(null, ronda);
 				JPanel panelsito = new JPanel();
-				
+				panelsito.setBackground(new Color(0, 191, 255));
 				panelsito.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 				JLabel mesa = new JLabel("Mesa1 ");
-				JLabel blancas = new JLabel(" Mana");//rondita.Partidas.get(ronda).getJblancas().getNombre());
+				JLabel blancas = new JLabel(rondita.Partidas.get(ronda).getJblancas().getNombre());
 				JComboBox result = new JComboBox();
-				result.setModel(new DefaultComboBoxModel(new String[] {"","1-0","0-1","1/2-1/2" }));;
-				JLabel negras = new JLabel("Jugador2"); 
+				result.setModel(new DefaultComboBoxModel(new String[] {"","1-0","0-1","1/2-1/2" }));
+				JLabel negras = new JLabel("Jugador2");
 				panelsito.add(mesa);
 				panelsito.add(blancas);
 				panelsito.add(result);
 				panelsito.add(negras);
 				frmInfoRonda.getContentPane().add(panelsito);
 				
-/*			}
+			}
+			
 		/*}
 		else if(NumRonda.getSelectedIndex()== 2){
 			JOptionPane.showMessageDialog( null, "aun no existe");
 		}else {
 			JOptionPane.showMessageDialog( null, "Seleccione una Ronda");
-		}*/
+		 }*/
 	}
-
 }
