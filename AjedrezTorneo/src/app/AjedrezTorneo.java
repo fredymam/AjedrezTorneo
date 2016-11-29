@@ -45,7 +45,7 @@ public class AjedrezTorneo extends JFrame {
 		tournament.Participantes.add(new Jugador("Alexander Alekhine"));
 		Jugador jugador1 = new Jugador("Anatoly Karpov");
 		jugador1.score = 15;
-		jugador1.Desempate1 = 13;
+		jugador1.Desempate1 = 5;
 		jugador1.Desempate2 = 10;
 		jugador1.Desempate3 = 9;
 		tournament.Participantes.add(jugador1);
@@ -55,8 +55,8 @@ public class AjedrezTorneo extends JFrame {
 		tournament.Participantes.add(new Jugador("Paul Morphy"));	
 		Jugador jugador2 = new Jugador("Bobby Fisher");
 		jugador2.score = 15;		
-		jugador2.Desempate1 = 12;
-		jugador2.Desempate2 = 10;
+		jugador2.Desempate1 = 5;
+		jugador2.Desempate2 = 6;
 		jugador2.Desempate3 = 11;
 		tournament.Participantes.add(jugador2);
 		tournament.Participantes.add(new Jugador("Magnus Carlsen"));

@@ -56,23 +56,51 @@ public class Score implements Comparator<Jugador> {
 		   rowJugador[fila][colApellido] = torneo.Participantes.get(fila).getApellido();
 		   rowJugador[fila][colNombre] = torneo.Participantes.get(fila).getNombre();
 		   rowJugador[fila][colSexo] = String.valueOf(torneo.Participantes.get(fila).getSexo());
+		   rowJugador[fila][colCategoria] = String.valueOf(torneo.Participantes.get(fila).getCategoria());
 		   rowJugador[fila][colPuntos] = String.valueOf(torneo.Participantes.get(fila).getScore());
 		   rowJugador[fila][colDesempate1] = String.valueOf(torneo.Participantes.get(fila).getDesempate1());
 		   rowJugador[fila][colDesempate2] = String.valueOf(torneo.Participantes.get(fila).getDesempate2());
 		   rowJugador[fila][colDesempate3] = String.valueOf(torneo.Participantes.get(fila).getDesempate3());
-		   // completar columnas
 	   }
 	   return rowJugador;
 	}
 
 
 	@Override
-	public int compare(Jugador J1, Jugador J2) {
-		if (J1.getScore()>J2.getScore()) {
+	public int compare(Jugador jugador1, Jugador jugador2) {
+		if (jugador1.getScore()>jugador2.getScore()) {
 			return -1;
-		} else if (J1.getScore()<J2.getScore()) {
+		} else if (jugador1.getScore()<jugador2.getScore()) {
 			      return 1;			    		   		  
-		       } else { 
+		       } else { // DESEMPATE1
+		    	        if (jugador1.getDesempate1()>jugador2.getDesempate1()){
+		    		      return -1;
+		    	        } else {
+		    		             if (jugador1.getDesempate1()<jugador2.getDesempate1()){
+		    			   return 1;
+		    		  }
+		    		   else{
+		    			   if (jugador1.getDesempate2()>jugador2.getDesempate2()){
+		    				   return -1;
+		    			   }
+			    		     else{
+				    			   if (jugador1.getDesempate2()<jugador2.getDesempate2()){
+				    				   return 1;
+				    			   }
+			    			   else{
+			    				   if (jugador1.getDesempate3()>jugador2.getDesempate3()){
+			    					   return -1;
+			    				   }
+			    				   else{
+			    					   if (jugador1.getDesempate3()<jugador2.getDesempate3()){
+			    						   return 1;
+			    					   }
+			    				   }
+			    			   }
+		    		   }
+		    		     
+		    	   }
+		       } 
 		    	   return 0;
 		    	      
 		       }
