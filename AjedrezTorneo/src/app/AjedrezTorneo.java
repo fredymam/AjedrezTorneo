@@ -83,7 +83,7 @@ public class AjedrezTorneo extends JFrame {
 		 * 2    CARLSEN      0-1      NAKAMURA
 		 */
 		if (tournament!=null) {
-			InterfazRonda apare = new InterfazRonda(tournament);
+			InterfazRonda apareamiento = new InterfazRonda(tournament);
 		} else { JOptionPane.showMessageDialog(null, "No existe un torneo registrado.");
 		}
 	}
