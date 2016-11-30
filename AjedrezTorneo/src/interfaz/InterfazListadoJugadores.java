@@ -7,10 +7,12 @@ package interfaz;
 //} 
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -65,16 +67,10 @@ public class InterfazListadoJugadores extends JFrame {
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		contentPane.add(scrollPane, BorderLayout.CENTER);
 		
-		table = new JTable(new DefaultTableModel(
-			new Object[][] {
-				{null, null, "", "", ""},
-			},
-			new String[] {
-				"Nombre", "Categoria", "Sexo", "Elo", "Fecha de nacimiento"
-			}
-		));   // Tabla visual del listado de jugadores y posiciones
-		table.setToolTipText("");
+		table = new JTable(torneo.getScore().tablaDatos);
+		table.setBackground(new Color(250, 235, 215));
 		scrollPane.setViewportView(table);
+		setVisible(true);
 		
 		panel = new JPanel();
 		contentPane.add(panel, BorderLayout.EAST);
@@ -82,11 +78,11 @@ public class InterfazListadoJugadores extends JFrame {
 		btnAgregar = new JButton("Agregar");
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 			}
-		});
-		panel.setLayout(new GridLayout(4, 1, 0, 0));
-		panel.add(btnAgregar);
+		}
+		);
+		//panel.setLayout(new GridLayout(4, 1, 0, 0));
+		//panel.add(btnAgregar);
 		
 		btnEliminar = new JButton("Eliminar");
 		panel.add(btnEliminar);

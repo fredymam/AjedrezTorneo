@@ -57,7 +57,7 @@ public class Score implements Comparator<Jugador> {
 		   rowJugador[fila][colApellido] = torneo.Participantes.get(fila).getApellido();
 		   rowJugador[fila][colNombre] = torneo.Participantes.get(fila).getNombre();
 		   rowJugador[fila][colSexo] = String.valueOf(torneo.Participantes.get(fila).getSexo());
-		   rowJugador[fila][colCategoria] = String.valueOf(torneo.Participantes.get(fila).getCategoria());
+		   rowJugador[fila][colCategoria] = torneo.Participantes.get(fila).getCategoria();
 		   rowJugador[fila][colPuntos] = String.valueOf(torneo.Participantes.get(fila).getScore());
 		   rowJugador[fila][colDesempate1] = String.valueOf(torneo.Participantes.get(fila).getDesempate1());
 		   rowJugador[fila][colDesempate2] = String.valueOf(torneo.Participantes.get(fila).getDesempate2());
