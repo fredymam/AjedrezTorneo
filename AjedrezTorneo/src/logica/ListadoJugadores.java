@@ -42,9 +42,9 @@ public class ListadoJugadores {
 	   for (int fila=0;fila<torneo.Participantes.size();fila++) { 
 		   rowJugador[fila][colNombre] = torneo.Participantes.get(fila).getNombre();
 		   rowJugador[fila][colCategoria] = torneo.Participantes.get(fila).getCategoria();
-		  // rowJugador[fila][colSexo] = torneo.Participantes.get(fila).getSexo();
-		  // rowJugador[fila][colElo] = torneo.Participantes.get(fila).getElo();
-		  // rowJugador[fila][colFechaNacimiento] = torneo.Participantes.get(fila).getNacimiento(); 
+		   rowJugador[fila][colSexo] = String.valueOf(torneo.Participantes.get(fila).getSexo());
+		   rowJugador[fila][colElo] = String.valueOf(torneo.Participantes.get(fila).getElo());
+		   rowJugador[fila][colFechaNacimiento] = String.valueOf(torneo.Participantes.get(fila).getNacimiento()); 
 		   
 	   }
 	   return rowJugador;

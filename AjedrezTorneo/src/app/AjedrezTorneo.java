@@ -57,7 +57,8 @@ public class AjedrezTorneo extends JFrame {
 		tournament.Participantes.add(new Jugador("José Raúl Capablanca"));
 		tournament.Participantes.add(new Jugador("Paul Morphy"));	
 		Jugador jugador2 = new Jugador("Bobby Fisher");
-		jugador2.score = 15;		
+		jugador2.score = 15;	
+		jugador2.setNacimiento("24/02/1999");
 		jugador2.Desempate1 = 5;
 		jugador2.Desempate2 = 6;
 		jugador2.Desempate3 = 11;

@@ -17,6 +17,7 @@ public class Score implements Comparator<Jugador> {
 	public final int colDesempate2 = 7;
 	public final int colDesempate3 = 8;
 	
+	
 	private Torneo torneo;            // Referencia al Torneo 
 	private String[] colJugador;      // Arreglo de una dimensión para los títulos de las columnas 
     private String[][] rowJugador;    // Arreglo de dos dimensiones para los datos de las filas.
@@ -56,7 +57,7 @@ public class Score implements Comparator<Jugador> {
 		   rowJugador[fila][colApellido] = torneo.Participantes.get(fila).getApellido();
 		   rowJugador[fila][colNombre] = torneo.Participantes.get(fila).getNombre();
 		   rowJugador[fila][colSexo] = String.valueOf(torneo.Participantes.get(fila).getSexo());
-		   rowJugador[fila][colCategoria] = String.valueOf(torneo.Participantes.get(fila).getCategoria());
+		   rowJugador[fila][colCategoria] = torneo.Participantes.get(fila).getCategoria();
 		   rowJugador[fila][colPuntos] = String.valueOf(torneo.Participantes.get(fila).getScore());
 		   rowJugador[fila][colDesempate1] = String.valueOf(torneo.Participantes.get(fila).getDesempate1());
 		   rowJugador[fila][colDesempate2] = String.valueOf(torneo.Participantes.get(fila).getDesempate2());
@@ -64,6 +65,10 @@ public class Score implements Comparator<Jugador> {
 	   }
 	   return rowJugador;
 	}
+	
+	private int ResolverProblema (int Desempate1, int Desempate2) {
+	      return Desempate1-Desempate2;
+}
 
 
 	@Override
@@ -71,8 +76,30 @@ public class Score implements Comparator<Jugador> {
 		if (jugador1.getScore()>jugador2.getScore()) {
 			return -1;
 		} else if (jugador1.getScore()<jugador2.getScore()) {
-			      return 1;			    		   		  
-		       } else { // DESEMPATE1
+			      return 1;		
+		       } else { int x;
+		                x = ResolverProblema(jugador1.Desempate1,jugador2.Desempate1);
+		       		    if (x==0) {     	
+					       x = ResolverProblema(jugador1.Desempate2,jugador2.Desempate2);
+		       		       if (x==0) x = ResolverProblema(jugador1.Desempate3,jugador2.Desempate3);  		        
+		       		          return x;	   
+		       }
+		       		    }		       		    
+		       		   
+		    	   
+		       	 }
+		
+		
+		
+	}
+
+		
+		
+		
+		
+		
+		
+		/*else { // DESEMPATE1
 		    	        if (jugador1.getDesempate1()>jugador2.getDesempate1()){
 		    		      return -1;
 		    	        } else {
@@ -106,4 +133,4 @@ public class Score implements Comparator<Jugador> {
 		       }
 	}
 
-}
+}*/
