@@ -19,6 +19,8 @@ import logica.Torneo;
 import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.Font;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 public class InterfazJugador {
 	private Torneo tournament;
@@ -26,6 +28,7 @@ public class InterfazJugador {
 	private JTextField jtexfield_elo;
 	private JComboBox<String> comboBox_sexo;
 	private JTextField jtexfield_apellido;
+	private JComboBox<String> comboBox_categoria; 
 	
 	public InterfazJugador(Torneo torneo) {
 		tournament = torneo;
@@ -38,7 +41,7 @@ public class InterfazJugador {
 		frame.getContentPane().setBackground(new Color(154, 205, 50));
 		frame.setBounds(100, 100, 322, 347);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new GridLayout(6, 1, 0, 0));
+		frame.getContentPane().setLayout(new GridLayout(7, 1, 0, 0));
 		
 		JLabel lblNewLabel = new JLabel("JUGADOR");
 		lblNewLabel.setFont(new Font("Bookman Old Style", Font.BOLD, 12));
@@ -119,7 +122,18 @@ public class InterfazJugador {
 				RegistrarJugador();			
 			}
 		});
+		
+		JPanel panel_4 = new JPanel();
+		frame.getContentPane().add(panel_4);
+		
+		JLabel lblCategoria = new JLabel("Categoria:");
+		panel_4.add(lblCategoria);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"(GMI)- Gran Maestro Internacional", "(GM)- Gran Maestro", "(MI)- Maestro Internacional", "(MF)- Maestro FIDE ", "(F)- Federado"}));
+		panel_4.add(comboBox);
 		frame.getContentPane().add(btnNewButton);
+		frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblNewLabel, panel, lblNewLabel_1, jtexfield_nombre, lblApellido, jtexfield_apellido, panel_1, lblNewLabel_2, comboBox_1, comboBox_2, comboanio, panel_2, lblNewLabel_3, comboBox_sexo, panel_3, lblNewLabel_4, jtexfield_elo, btnNewButton}));
 	}
 
 	private void add(JComboBox comboanio) {
@@ -133,6 +147,40 @@ public class InterfazJugador {
 		} else {
 			jugador.setSexo('F');
 		}
+		
+	    i = comboBox_categoria.getSelectedIndex();
+		
+		if (i==0){
+			jugador.setCategoria("(GMI)-Gran Maestro Internacional");
+		} else	{ 
+		if (i==1){
+			jugador.setCategoria("(GM)-Gran Maestro");
+		}else   {
+		if (i==2){
+			jugador.setCategoria("(MI)-Maestro Internacional");
+		}else {
+			if (i==3){
+				jugador.setCategoria()
+			}
+		}
+	
+		
+			
+	   
+			
+	  	
+				
+		
+		
+		
+		
+				
+			
+		
+		
+		
+		
+		
 	//	jugador.setNacimiento( ?? );
 	//	jugador.setElo( ?? );
 		tournament.Participantes.add(jugador);

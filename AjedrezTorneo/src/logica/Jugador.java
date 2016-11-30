@@ -11,6 +11,7 @@ public class Jugador implements Comparable<Jugador>{
 	private String apellido;
 	private Date nacimiento;
 	private int elo;
+	private String categoria;
 	public double score = 0.0;
 	public double Desempate1;
 	public double Desempate2;
@@ -44,6 +45,11 @@ public class Jugador implements Comparable<Jugador>{
 	public void setElo(int elo) {
 		this.elo = elo;
 	}
+	
+	public String setCategoria(){
+		return categoria;
+	}
+	
 	
 	public double getScore() {
 		return score;
