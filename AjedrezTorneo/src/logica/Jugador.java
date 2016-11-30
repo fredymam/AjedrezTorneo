@@ -12,10 +12,9 @@ public class Jugador implements Comparable<Jugador>{
 	private Date nacimiento;
 	private int elo;
 	public double score = 0.0;
-	public double Desempate1;
-	public double Desempate2;
-	public double Desempate3;
-	public ArrayList<Partida> juegos;
+	public int Desempate1;
+	public int Desempate2;
+	public int Desempate3;
 	
 	public Jugador(String nombre) {
 		this.nombre = nombre;		
