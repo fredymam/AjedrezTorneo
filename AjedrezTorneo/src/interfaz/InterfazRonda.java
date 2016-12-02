@@ -83,7 +83,7 @@ public class InterfazRonda {
 		for(int i=0; i<ronda.Partidas.size(); i++) {
 			JPanel panelsito = new JPanel();
 			panelsito.setBackground(new Color(0, 191, 255));
-			panelsito.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+			panelsito.setLayout(new GridLayout(0, 4, 0, 0));
 			JLabel lblmesa = new JLabel("Mesa: "+ronda.Partidas.get(i).getMesa());
 			JLabel lblblancas = new JLabel(ronda.Partidas.get(i).getJblancas().getNombre());
 			JComboBox<String> comboresult = new JComboBox<String>();
