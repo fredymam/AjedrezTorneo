@@ -124,11 +124,24 @@ public class Jugador implements Comparable<Jugador>{
 	}
 	
 	public String getCategoria() {
-	   /**
-		 Según la edad, devolver "Sub-8", "Sub-10", "Sub-12", "Sub-14", "Sub-18", "Mayor", "Senior"  
-	     Ej: return "Sub-8";		   
-	   **/
-		return "Mayor";
+		  String resultado = "";
+		  int edad = getEdad();
+		  if (edad<= 8){
+			  resultado = "Sub-8";
+		  }else if(edad<=10){
+			       resultado = "Sub-10";
+		        }else if (edad<=12){
+		        	      resultado = "Sub-12";
+		              }else if (edad<=14){
+		            	        resultado = "Sub-14";
+		                     }else if (edad<=18){
+		                    	       resultado = "Sub-18";
+		                           }else if (edad<=21){
+		                        	         resultado = "Mayor";
+		                                 } else {
+		                                	 resultado = "Senior";
+		                                       }
+		  return resultado;
 	}
 	
 	
