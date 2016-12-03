@@ -105,42 +105,42 @@ public class Jugador implements Comparable<Jugador>{
 	}
 	
 	public int getEdad() {
-		Calendar Dia = Calendar.getInstance();
-		int HoyAnio = Dia.get(Calendar.YEAR);
-		int HoyMes = Dia.get(Calendar.MONTH);
-		int HoyDia = Dia.get(Calendar.DAY_OF_MONTH);
+		if (nacimiento!=null) {
+			Calendar Dia = Calendar.getInstance();
+			int HoyAnio = Dia.get(Calendar.YEAR);
+			int HoyMes = Dia.get(Calendar.MONTH);
+			int HoyDia = Dia.get(Calendar.DAY_OF_MONTH);
 		
-		Dia.setTime(nacimiento);
-		int NacAnio = Dia.get(Calendar.YEAR);
-		int NacMes = Dia.get(Calendar.MONTH);
-		int NacDia = Dia.get(Calendar.DAY_OF_MONTH);
+			Dia.setTime(nacimiento);
+			int NacAnio = Dia.get(Calendar.YEAR);
+			int NacMes = Dia.get(Calendar.MONTH);
+			int NacDia = Dia.get(Calendar.DAY_OF_MONTH);
 		
-		int edad = HoyAnio - NacAnio;
+			int edad = HoyAnio - NacAnio;
 		
-		if ((HoyMes < NacMes) || ((HoyMes == NacMes) && (HoyDia < NacDia))) {
-			edad--;
-		}
-		return edad;		
+			if ((HoyMes < NacMes) || ((HoyMes == NacMes) && (HoyDia < NacDia))) {
+			 edad--;
+			}
+			return edad;	
+		}else return 0;
 	}
 	
 	public String getCategoria() {
-		  String resultado = "";
+		  String resultado = "Mayor";
 		  int edad = getEdad();
-		  if (edad<= 8){
-			  resultado = "Sub-8";
-		  }else if(edad<=10){
-			       resultado = "Sub-10";
-		        }else if (edad<=12){
-		        	      resultado = "Sub-12";
-		              }else if (edad<=14){
-		            	        resultado = "Sub-14";
-		                     }else if (edad<=18){
-		                    	       resultado = "Sub-18";
-		                           }else if (edad<=21){
-		                        	         resultado = "Mayor";
-		                                 } else {
-		                                	 resultado = "Senior";
-		                                       }
+		  if (edad>0){
+			  if (edad<= 8){
+				  resultado = "Sub-8";
+			  }else if(edad<=10){
+				       resultado = "Sub-10";
+			        } else if (edad<=12){
+			        	      resultado = "Sub-12";
+			              } else if (edad<=14){
+			            	        resultado = "Sub-14";
+			                     } else if (edad<=18) {
+			                    	       resultado = "Sub-18";
+			                            }	                           
+		  }                                 
 		  return resultado;
 	}
 	
