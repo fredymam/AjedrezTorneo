@@ -20,14 +20,14 @@ import logica.Torneo;
 
 @SuppressWarnings("serial")
 public class InterfazArbitro extends JFrame {
-	private Torneo tournament;
+	private InterfazTorneo interfaztorneo;
 	private JPanel contentPane;
 	private JTextField JTextField_nombre;
 	private JTextField JTextField_apellido;
 	private JComboBox<String> JComboBox_categoria;
 
-	public InterfazArbitro(Torneo torneo) {
-		tournament = torneo;
+	public InterfazArbitro(InterfazTorneo interfaztorneo) {
+		this.interfaztorneo = interfaztorneo; 
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 256, 214);
 		contentPane = new JPanel();
@@ -93,8 +93,9 @@ public class InterfazArbitro extends JFrame {
 					 break;
 			case 3 : Referee.setCategoria('D');
 					break;
+					
 		}
-		tournament.Arbitros.add(Referee);
+		interfaztorneo.SetArbitro(Referee);
 		JOptionPane.showMessageDialog(null, "Arbitro Registrado!");		
 	}
 }

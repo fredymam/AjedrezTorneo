@@ -11,26 +11,33 @@ import interfaz.InterfazListadoJugadores;
 import interfaz.InterfazPartida;
 import interfaz.InterfazScore;
 import interfaz.InterfazTorneo;
-import interfaz.InterfazRonda;
+import logica.Arbitro;
 import logica.Jugador;
 import logica.Partida;
 import logica.Torneo;
-import logica.Ronda;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JMenu;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class AjedrezTorneo extends JFrame {
 	private JPanel contentPane;
-	
-    private Torneo tournament;
+	private ArrayList<Arbitro> Arbitros;	
+	private Torneo tournament;
     private Partida match;
+    
+	public ArrayList<Arbitro> getArbitros() {
+		return Arbitros;
+	}
 
+	public void setArbitros(ArrayList<Arbitro> arbitros) {
+		Arbitros = arbitros;
+	}
     
 	public void nuevoTorneo() {
 		if (tournament==null) {
@@ -48,7 +55,7 @@ public class AjedrezTorneo extends JFrame {
 		tournament.Participantes.add(new Jugador("Alexander Alekhine"));
 		Jugador jugador1 = new Jugador("Anatoly Karpov");
 		jugador1.score = 15;
-		jugador1.Desempate1 = 5;
+		jugador1.Desempate1 = 13;
 		jugador1.Desempate2 = 10;
 		jugador1.Desempate3 = 9;
 		tournament.Participantes.add(jugador1);
@@ -57,10 +64,9 @@ public class AjedrezTorneo extends JFrame {
 		tournament.Participantes.add(new Jugador("José Raúl Capablanca"));
 		tournament.Participantes.add(new Jugador("Paul Morphy"));	
 		Jugador jugador2 = new Jugador("Bobby Fisher");
-		jugador2.score = 15;	
-		jugador2.setNacimiento("24/02/1999");
-		jugador2.Desempate1 = 5;
-		jugador2.Desempate2 = 6;
+		jugador2.score = 15;		
+		jugador2.Desempate1 = 12;
+		jugador2.Desempate2 = 10;
 		jugador2.Desempate3 = 11;
 		tournament.Participantes.add(jugador2);
 		tournament.Participantes.add(new Jugador("Magnus Carlsen"));
@@ -84,9 +90,8 @@ public class AjedrezTorneo extends JFrame {
 		 * 2    CARLSEN      0-1      NAKAMURA
 		 */
 		if (tournament!=null) {
-			InterfazRonda apareamiento = new InterfazRonda(tournament);
-		} else { JOptionPane.showMessageDialog(null, "No existe un torneo registrado.");
-		}
+			//InterfazRonda ronda = new InterfazRonda(tournament);
+		} 
 	}
 	
 	public void mostrarResultados(){
@@ -107,6 +112,7 @@ public class AjedrezTorneo extends JFrame {
 		
 	}
 	
+
 	public AjedrezTorneo() {
 		setTitle("Ajedrez Torneo by EPET3");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -177,6 +183,7 @@ public class AjedrezTorneo extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 	}
+	
 	
 	/**
 	 * Launch the application.

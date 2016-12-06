@@ -18,8 +18,17 @@ import javax.swing.border.BevelBorder;
 import java.awt.Color;
 import java.awt.Font;
 
+import logica.Arbitro;
 import logica.Torneo;
-
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JTable;
+import javax.swing.JScrollBar;
+import java.awt.SystemColor;
+import interfaz.InterfazArbitro;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JTextArea;
 @SuppressWarnings("serial")
 public class InterfazTorneo extends JFrame {
     private Torneo tournament;
@@ -44,7 +53,8 @@ public class InterfazTorneo extends JFrame {
 	private JComboBox comboBox_des3;
 	private JLabel lblNewLabel_2;
 	private JLabel label;
-
+	private JTextArea textAreaArbitro;
+	
 	private void CrearTorneo(){
 		tournament.setNombre(textField_Nombre.getText());
 		// tournament.setFecha(lblFecha.getString());
@@ -99,7 +109,7 @@ public class InterfazTorneo extends JFrame {
 		setTitle("Ajedrez Torneo");
 		tournament = torneo;
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 589, 402);
+		setBounds(100, 100, 589, 462);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 191, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -202,21 +212,87 @@ public class InterfazTorneo extends JFrame {
 		
 		panelboton = new JPanel();
 		panelboton.setBackground(new Color(0, 191, 255));
-		FlowLayout fl_panelboton = (FlowLayout) panelboton.getLayout();
 		contentPane.add(panelboton);
+		
+		JPanel panel = new JPanel();
+		GroupLayout gl_panelboton = new GroupLayout(panelboton);
+		gl_panelboton.setHorizontalGroup(
+			gl_panelboton.createParallelGroup(Alignment.LEADING)
+				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE)
+		);
+		gl_panelboton.setVerticalGroup(
+			gl_panelboton.createParallelGroup(Alignment.LEADING)
+				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+		);
 		
 		btnCrear = new JButton("Crear");
 		btnCrear.setForeground(new Color(100, 149, 237));
 		btnCrear.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+		
+		JButton btnAgregar = new JButton("Agregar");
+		btnAgregar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				InterfazTorneo interfazarbitro = null;
+				InterfazArbitro VentanaAr = new InterfazArbitro(interfazarbitro); 
+				VentanaAr.setVisible(true);	
+				
+			}
+		});
+		
+		JButton btnBorrar = new JButton("Borrar");
+		
+		JLabel lblArbitros = new JLabel("Arbitros");
+		lblArbitros.setForeground(SystemColor.textHighlight);
+		
+		textAreaArbitro = new JTextArea();
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(23)
+							.addComponent(textAreaArbitro, GroupLayout.PREFERRED_SIZE, 208, GroupLayout.PREFERRED_SIZE)
+							.addGap(99)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(btnBorrar, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(btnAgregar, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addGap(70)
+							.addComponent(btnCrear))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(94)
+							.addComponent(lblArbitros, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(29, Short.MAX_VALUE))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addComponent(lblArbitros, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(btnAgregar)
+							.addGap(18)
+							.addComponent(btnBorrar)
+							.addGap(12))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(btnCrear)
+							.addGap(34))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(textAreaArbitro, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())))
+		);
+		panel.setLayout(gl_panel);
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			   CrearTorneo();   
 			
 			}
 		});
-		panelboton.add(btnCrear);
+		panelboton.setLayout(gl_panelboton);
 	}
-	
-	
-
+	public void SetArbitro(Arbitro Referee) {
+		tournament.Arbitros.add(Referee);
+		textAreaArbitro.append();
+	}
 }
