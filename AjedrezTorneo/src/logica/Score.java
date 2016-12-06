@@ -66,9 +66,9 @@ public class Score implements Comparator<Jugador> {
 	   return rowJugador;
 	}
 	
-	private int ResolverProblema (int Desempate1, int Desempate2) {
-	      return Desempate1-Desempate2;
-}
+	private int desempate (int Desempate1, int Desempate2) {
+	      return Desempate2-Desempate1;
+	}
 
 
 	@Override
@@ -77,60 +77,18 @@ public class Score implements Comparator<Jugador> {
 			return -1;
 		} else if (jugador1.getScore()<jugador2.getScore()) {
 			      return 1;		
-		       } else { int x;
-		                x = ResolverProblema(jugador1.Desempate1,jugador2.Desempate1);
-		       		    if (x==0) {     	
-					       x = ResolverProblema(jugador1.Desempate2,jugador2.Desempate2);
-		       		       if (x==0) x = ResolverProblema(jugador1.Desempate3,jugador2.Desempate3);  		        
-		       		          return x;	   
-		       }
-		       		    }		       		    
-		       		   
-		    	   
-		       	 }
-		
-		
-		
+		       } else { int des;
+		                des = desempate(jugador1.Desempate1,jugador2.Desempate1);
+		       		    if (des==0) {     	
+					       des = desempate(jugador1.Desempate2,jugador2.Desempate2);
+		       		       if (des==0) des = desempate(jugador1.Desempate3,jugador2.Desempate3);		       		           
+		       		    }
+		       		    return des;		       		    		       		    
+					  }   	   
 	}
 
 		
+}		
 		
 		
 		
-		
-		
-		/*else { // DESEMPATE1
-		    	        if (jugador1.getDesempate1()>jugador2.getDesempate1()){
-		    		      return -1;
-		    	        } else {
-		    		             if (jugador1.getDesempate1()<jugador2.getDesempate1()){
-		    			   return 1;
-		    		  }
-		    		   else{
-		    			   if (jugador1.getDesempate2()>jugador2.getDesempate2()){
-		    				   return -1;
-		    			   }
-			    		     else{
-				    			   if (jugador1.getDesempate2()<jugador2.getDesempate2()){
-				    				   return 1;
-				    			   }
-			    			   else{
-			    				   if (jugador1.getDesempate3()>jugador2.getDesempate3()){
-			    					   return -1;
-			    				   }
-			    				   else{
-			    					   if (jugador1.getDesempate3()<jugador2.getDesempate3()){
-			    						   return 1;
-			    					   }
-			    				   }
-			    			   }
-		    		   }
-		    		     
-		    	   }
-		       } 
-		    	   return 0;
-		    	      
-		       }
-	}
-
-}*/

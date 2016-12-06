@@ -19,7 +19,6 @@ import logica.Torneo;
 import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.Font;
-import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
 
 public class InterfazJugador {
@@ -133,15 +132,16 @@ public class InterfazJugador {
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"(GMI)- Gran Maestro Internacional", "(GM)- Gran Maestro", "(MI)- Maestro Internacional", "(MF)- Maestro FIDE ", "(F)- Federado"}));
 		panel_4.add(comboBox);
 		frame.getContentPane().add(btnNewButton);
-		frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblNewLabel, panel, lblNewLabel_1, jtexfield_nombre, lblApellido, jtexfield_apellido, panel_1, lblNewLabel_2, comboBox_1, comboBox_2, comboanio, panel_2, lblNewLabel_3, comboBox_sexo, panel_3, lblNewLabel_4, jtexfield_elo, btnNewButton}));
+		//frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblNewLabel, panel, lblNewLabel_1, jtexfield_nombre, lblApellido, jtexfield_apellido, panel_1, lblNewLabel_2, comboBox_1, comboBox_2, comboanio, panel_2, lblNewLabel_3, comboBox_sexo, panel_3, lblNewLabel_4, jtexfield_elo, btnNewButton}));
 	}
 
 	private void add(JComboBox comboanio) {
 		// TODO Auto-generated method stub
 		
 	}
+	
 	private void RegistrarJugador(){
-		Jugador jugador = new Jugador(jtexfield_nombre.getText());
+		/**Jugador jugador = new Jugador(jtexfield_nombre.getText());
 		if (comboBox_sexo.getSelectedIndex()==0){
 			jugador.setSexo('M');
 		} else {
@@ -162,29 +162,11 @@ public class InterfazJugador {
 			if (i==3){
 				jugador.setCategoria()
 			}
-		}
-	
-		
-			
-	   
-			
-	  	
-				
-		
-		
-		
-		
-				
-			
-		
-		
-		
-		
-		
-	//	jugador.setNacimiento( ?? );
+		}			
+		//	jugador.setNacimiento( ?? );
 	//	jugador.setElo( ?? );
 		tournament.Participantes.add(jugador);
-		JOptionPane.showMessageDialog(null, "Jugador Registrado");
+		JOptionPane.showMessageDialog(null, "Jugador Registrado");**/
 	}
 
 }

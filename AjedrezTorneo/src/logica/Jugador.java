@@ -136,7 +136,7 @@ public class Jugador implements Comparable<Jugador>{
 		  if (edad>0){
 			  if (edad<= 8){
 				  resultado = "Sub-8";
-			  }else if(edad<=10){
+			  } else if(edad<=10){
 				       resultado = "Sub-10";
 			        } else if (edad<=12){
 			        	      resultado = "Sub-12";
