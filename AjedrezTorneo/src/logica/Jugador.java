@@ -6,17 +6,21 @@ import java.util.*;
 
 
 public class Jugador implements Comparable<Jugador>{
-	private char sexo;
 	private String nombre;
 	private String apellido;
 	private Date nacimiento;
+	private char sexo;
+	private String pais;
+	private String titulo;
 	private int elo;
-	private String categoria;
+	private String correo;
+	
 	public double score = 0.0;
 	public int Desempate1;
 	public int Desempate2;
 	public int Desempate3;
 	
+
 	public Jugador(String nombre) {
 		this.nombre = nombre;		
 	}
@@ -45,10 +49,6 @@ public class Jugador implements Comparable<Jugador>{
 		this.elo = elo;
 	}
 	
-	public String setCategoria(){
-		return categoria;
-	}
-	
 	
 	public double getScore() {
 		return score;
@@ -68,6 +68,26 @@ public class Jugador implements Comparable<Jugador>{
 	
 	public Date getNacimiento() {
 		return nacimiento;
+	}
+	
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	public void setPais(String pais) {
+		this.pais = pais;
 	}
 	
 	public double getDesempate1(){

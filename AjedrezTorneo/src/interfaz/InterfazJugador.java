@@ -20,6 +20,9 @@ import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.Font;
 import java.awt.Component;
+import java.awt.Container;
+import javax.swing.BoxLayout;
+import java.awt.FlowLayout;
 
 public class InterfazJugador {
 	private Torneo tournament;
@@ -27,7 +30,9 @@ public class InterfazJugador {
 	private JTextField jtexfield_elo;
 	private JComboBox<String> comboBox_sexo;
 	private JTextField jtexfield_apellido;
-	private JComboBox<String> comboBox_categoria; 
+	private JComboBox<String> comboBox_categoria;
+	private Container panel_5; 
+	private JTextField textField_1;
 	
 	public InterfazJugador(Torneo torneo) {
 		tournament = torneo;
@@ -38,9 +43,9 @@ public class InterfazJugador {
 		JFrame frame = new JFrame();
 		frame.getContentPane().setForeground(new Color(0, 0, 0));
 		frame.getContentPane().setBackground(new Color(154, 205, 50));
-		frame.setBounds(100, 100, 322, 347);
+		frame.setBounds(100, 100, 348, 357);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new GridLayout(7, 1, 0, 0));
+		frame.getContentPane().setLayout(new GridLayout(9, 1, 0, 0));
 		
 		JLabel lblNewLabel = new JLabel("JUGADOR");
 		lblNewLabel.setFont(new Font("Bookman Old Style", Font.BOLD, 12));
@@ -53,6 +58,7 @@ public class InterfazJugador {
 		frame.getContentPane().add(panel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Nombre");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Bookman Old Style", Font.BOLD, 12));
 		panel.add(lblNewLabel_1);
 		
@@ -61,6 +67,7 @@ public class InterfazJugador {
 		jtexfield_nombre.setColumns(10);
 		
 		JLabel lblApellido = new JLabel("Apellido");
+		lblApellido.setHorizontalAlignment(SwingConstants.CENTER);
 		lblApellido.setFont(new Font("Bookman Old Style", Font.BOLD, 12));
 		panel.add(lblApellido);
 		
@@ -72,6 +79,7 @@ public class InterfazJugador {
 		frame.getContentPane().add(panel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("F.Nac");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setFont(new Font("Bookman Old Style", Font.BOLD, 12));
 		panel_1.add(lblNewLabel_2);
 		
@@ -95,11 +103,12 @@ public class InterfazJugador {
 		frame.getContentPane().add(panel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Sexo");
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setFont(new Font("Bookman Old Style", Font.BOLD, 12));
 		panel_2.add(lblNewLabel_3);
 		
 		comboBox_sexo = new JComboBox();
-		comboBox_sexo.setModel(new DefaultComboBoxModel(new String[] {"M", "F"}));
+		comboBox_sexo.setModel(new DefaultComboBoxModel(new String[] {"M", "F", "Otro"}));
 		comboBox_sexo.setSelectedIndex(2);
 		panel_2.add(comboBox_sexo);
 		
@@ -107,12 +116,14 @@ public class InterfazJugador {
 		frame.getContentPane().add(panel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("ELO:");
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_4.setFont(new Font("Bookman Old Style", Font.BOLD, 12));
 		panel_3.add(lblNewLabel_4);
 		
 		jtexfield_elo = new JTextField();
 		panel_3.add(jtexfield_elo);
 		jtexfield_elo.setColumns(10);
+		
 		
 		JButton btnNewButton = new JButton("Registrar");
 		btnNewButton.setFont(new Font("Bookman Old Style", Font.BOLD, 12));
@@ -124,13 +135,40 @@ public class InterfazJugador {
 		
 		JPanel panel_4 = new JPanel();
 		frame.getContentPane().add(panel_4);
+		panel_4.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		JLabel lblCategoria = new JLabel("Categoria:");
+		JLabel lblCategoria = new JLabel("Titulo");
+		lblCategoria.setFont(new Font("Bookman Old Style", Font.BOLD, 12));
+		lblCategoria.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_4.add(lblCategoria);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"(GMI)- Gran Maestro Internacional", "(GM)- Gran Maestro", "(MI)- Maestro Internacional", "(MF)- Maestro FIDE ", "(F)- Federado"}));
+		comboBox.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"", "GMI ", "GM", "MI", "MF ", "F"}));
 		panel_4.add(comboBox);
+		
+		JPanel panel_6 = new JPanel();
+		frame.getContentPane().add(panel_6);
+		
+		JLabel lblNewLabel_5 = new JLabel("Pais:");
+		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_5.setFont(new Font("Bookman Old Style", Font.BOLD, 12));
+		panel_6.add(lblNewLabel_5);
+		
+		JComboBox comboBox_3 = new JComboBox(); //http://laendercode.net/es/3-letter-list.html
+		panel_6.add(comboBox_3);
+		
+		JPanel panel_7 = new JPanel();
+		frame.getContentPane().add(panel_7);
+		
+		JLabel lblNewLabel_6 = new JLabel("Correo:");
+		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_6.setFont(new Font("Bookman Old Style", Font.BOLD, 11));
+		panel_7.add(lblNewLabel_6);
+		
+		textField_1 = new JTextField();
+		panel_7.add(textField_1);
+		textField_1.setColumns(10);
 		frame.getContentPane().add(btnNewButton);
 		//frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{lblNewLabel, panel, lblNewLabel_1, jtexfield_nombre, lblApellido, jtexfield_apellido, panel_1, lblNewLabel_2, comboBox_1, comboBox_2, comboanio, panel_2, lblNewLabel_3, comboBox_sexo, panel_3, lblNewLabel_4, jtexfield_elo, btnNewButton}));
 	}
@@ -141,32 +179,19 @@ public class InterfazJugador {
 	}
 	
 	private void RegistrarJugador(){
-		/**Jugador jugador = new Jugador(jtexfield_nombre.getText());
+		Jugador jugador = new Jugador(jtexfield_nombre.getText());
+		
 		if (comboBox_sexo.getSelectedIndex()==0){
 			jugador.setSexo('M');
 		} else {
 			jugador.setSexo('F');
-		}
 		
-	    i = comboBox_categoria.getSelectedIndex();
-		
-		if (i==0){
-			jugador.setCategoria("(GMI)-Gran Maestro Internacional");
-		} else	{ 
-		if (i==1){
-			jugador.setCategoria("(GM)-Gran Maestro");
-		}else   {
-		if (i==2){
-			jugador.setCategoria("(MI)-Maestro Internacional");
-		}else {
-			if (i==3){
-				jugador.setCategoria()
-			}
-		}			
-		//	jugador.setNacimiento( ?? );
-	//	jugador.setElo( ?? );
+	 
+					
+		jugador.setNacimiento();
+    	jugador.setElo( );
 		tournament.Participantes.add(jugador);
-		JOptionPane.showMessageDialog(null, "Jugador Registrado");**/
+		JOptionPane.showMessageDialog(null, "Jugador Registrado");
 	}
 
 }
