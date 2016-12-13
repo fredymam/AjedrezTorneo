@@ -95,8 +95,7 @@ public class InterfazArbitro extends JFrame {
 					break;
 					
 		}
-		interfaztorneo.SetArbitro(Referee);
-		JOptionPane.showMessageDialog(null, "Arbitro Registrado!");		
+		interfaztorneo.SetArbitro(Referee);	
 	}
 }
 

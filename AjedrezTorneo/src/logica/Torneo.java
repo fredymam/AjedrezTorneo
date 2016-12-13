@@ -3,10 +3,11 @@ package logica;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import javax.swing.JOptionPane;
+import logica.Ronda.Estado;
 
 public class Torneo {
 	public enum Modalidad {SWISS,ROUNDROBIN}
-	public static final String Arbitro = null;;
 	private String Nombre;
 	private Date Fecha;
 	private String Lugar;
@@ -27,6 +28,10 @@ public class Torneo {
 	public void setNroRondas(int rondas) {
 		NroRondas = rondas;
 	}
+	
+	public int getActualRonda() {
+		return Rondas.size();
+	}	
 	
 	public Score getScore() {
 		return new Score(this);
@@ -85,4 +90,27 @@ public class Torneo {
 	public void setModalidad(Modalidad modalidad) {
 	    this.modalidad = modalidad;
 	}
+	
+	public Ronda NuevaRonda() {
+		 int NextRonda = getActualRonda()+1;	
+		/**
+		 * (NextRonda=1) --> No existen rondas previas
+		 * (NextRonda<=NroRondas) --> Evita crear una ronda extra al total definido
+		 * (Rondas.get(NextRonda-1).getEstado()==Estado.FINALIZADA) --> Se genera una nueva ronda, cuando la previa esta finalizada;
+		 * 	excepto cuando se trata de la primer ronda!.
+		 */
+		 if ((NextRonda==1) || (NextRonda<=NroRondas && Rondas.get(NextRonda-1).getEstado()==Estado.FINALIZADA)) {
+			 Ronda rueda = new Ronda(this,NextRonda);
+			 rueda.Pareo();
+			 Rondas.add(rueda);
+			 return rueda;			
+		 } else return null; 
+	}
+	
+	public Ronda getRonda(int ronda) {
+		if (ronda<=getActualRonda()) {
+			return Rondas.get(ronda);
+		} else return null; 		
+	}
 }
+	

@@ -54,6 +54,7 @@ public class InterfazTorneo extends JFrame {
 	private JLabel lblNewLabel_2;
 	private JLabel label;
 	private JTextArea textAreaArbitro;
+	private JTextArea jtx;
 	
 	private void CrearTorneo(){
 		tournament.setNombre(textField_Nombre.getText());
@@ -232,19 +233,25 @@ public class InterfazTorneo extends JFrame {
 		JButton btnAgregar = new JButton("Agregar");
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				InterfazTorneo interfazarbitro = null;
-				InterfazArbitro VentanaAr = new InterfazArbitro(interfazarbitro); 
-				VentanaAr.setVisible(true);	
-				
-			}
+				mostrarVentanaArbitro();
+				}
 		});
 		
 		JButton btnBorrar = new JButton("Borrar");
+		btnBorrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				borrarArbitro();
+			}
+		 
+		});
 		
 		JLabel lblArbitros = new JLabel("Arbitros");
 		lblArbitros.setForeground(SystemColor.textHighlight);
 		
 		textAreaArbitro = new JTextArea();
+		textAreaArbitro.setWrapStyleWord(true);
+		textAreaArbitro.setText("bueno\r\nqwjhier\r\nqw\r\n");
+		textAreaArbitro.setEditable(false);
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -293,6 +300,17 @@ public class InterfazTorneo extends JFrame {
 	}
 	public void SetArbitro(Arbitro Referee) {
 		tournament.Arbitros.add(Referee);
-		textAreaArbitro.append();
+		textAreaArbitro.append(Referee.getNombre()+"\r");
+	}
+	public void mostrarVentanaArbitro(){
+		InterfazArbitro VentanaAr = new InterfazArbitro(this); 
+		VentanaAr.setVisible(true);	
+	}
+	
+	public void borrarArbitro(){
+		
+	
 	}
 }
+
+

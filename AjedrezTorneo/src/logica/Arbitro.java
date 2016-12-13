@@ -4,7 +4,7 @@ import java.awt.Component;
 import java.util.ArrayList;
 
 public class Arbitro {
-	private static String nombre;
+	private String nombre;
 	private String apellido;
 	private char categoria;
 	private ArrayList<Arbitro> Arbitros;
@@ -45,10 +45,5 @@ public class Arbitro {
 		this.nombre = Nombre;
 		this.apellido  = Apellido;
 	}
-
-	public static String add(Arbitro referee) {
-		return nombre;
 		
-	}
-			
 }

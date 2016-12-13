@@ -183,13 +183,7 @@ public class InterfazJugador {
 		
 		if (comboBox_sexo.getSelectedIndex()==0){
 			jugador.setSexo('M');
-		} else {
-			jugador.setSexo('F');
-		
-	 
-					
-		jugador.setNacimiento();
-    	jugador.setElo( );
+		} else jugador.setSexo('F');
 		tournament.Participantes.add(jugador);
 		JOptionPane.showMessageDialog(null, "Jugador Registrado");
 	}
