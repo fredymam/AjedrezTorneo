@@ -46,4 +46,7 @@ public class Arbitro {
 		this.apellido  = Apellido;
 	}
 		
+	public String toString() {
+		return nombre; 
+	}
 }

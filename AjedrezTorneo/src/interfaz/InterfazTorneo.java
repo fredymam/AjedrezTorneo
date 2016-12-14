@@ -12,6 +12,8 @@ import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.BevelBorder;
@@ -29,6 +31,7 @@ import java.awt.SystemColor;
 import interfaz.InterfazArbitro;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTextArea;
+import javax.swing.JList;
 @SuppressWarnings("serial")
 public class InterfazTorneo extends JFrame {
     private Torneo tournament;
@@ -53,8 +56,12 @@ public class InterfazTorneo extends JFrame {
 	private JComboBox comboBox_des3;
 	private JLabel lblNewLabel_2;
 	private JLabel label;
-	private JTextArea textAreaArbitro;
 	private JTextArea jtx;
+	private JPanel panel_3;
+	private JPanel panel_4;
+	private JPanel panel_5;
+	private JList listarbitros;
+	private DefaultListModel datos;
 	
 	private void CrearTorneo(){
 		tournament.setNombre(textField_Nombre.getText());
@@ -115,7 +122,7 @@ public class InterfazTorneo extends JFrame {
 		contentPane.setBackground(new Color(0, 191, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(4, 1, 0, 0));
+		contentPane.setLayout(new GridLayout(5, 1, 0, 0));
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(192, 192, 192));
@@ -225,82 +232,67 @@ public class InterfazTorneo extends JFrame {
 			gl_panelboton.createParallelGroup(Alignment.LEADING)
 				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
 		);
+		panel.setLayout(new GridLayout(1, 2, 0, 0));
 		
-		btnCrear = new JButton("Crear");
-		btnCrear.setForeground(new Color(100, 149, 237));
-		btnCrear.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+		panel_3 = new JPanel();
+		panel.add(panel_3);
+		panel_3.setLayout(new GridLayout(4, 1, 0, 0));
+		
+		JLabel lblArbitros = new JLabel("Arbitros");
+		panel_3.add(lblArbitros);
+		lblArbitros.setHorizontalAlignment(SwingConstants.CENTER);
+		lblArbitros.setToolTipText("     ");
+		lblArbitros.setForeground(SystemColor.textHighlight);
 		
 		JButton btnAgregar = new JButton("Agregar");
-		btnAgregar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				mostrarVentanaArbitro();
-				}
-		});
+		panel_3.add(btnAgregar);
 		
 		JButton btnBorrar = new JButton("Borrar");
+		panel_3.add(btnBorrar);
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				borrarArbitro();
 			}
 		 
 		});
+		btnAgregar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				mostrarVentanaArbitro();
+				}
+		});
 		
-		JLabel lblArbitros = new JLabel("Arbitros");
-		lblArbitros.setForeground(SystemColor.textHighlight);
+		panel_4 = new JPanel();
+		panel.add(panel_4);
+		panel_4.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		textAreaArbitro = new JTextArea();
-		textAreaArbitro.setWrapStyleWord(true);
-		textAreaArbitro.setText("bueno\r\nqwjhier\r\nqw\r\n");
-		textAreaArbitro.setEditable(false);
-		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(23)
-							.addComponent(textAreaArbitro, GroupLayout.PREFERRED_SIZE, 208, GroupLayout.PREFERRED_SIZE)
-							.addGap(99)
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(btnBorrar, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnAgregar, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-							.addGap(70)
-							.addComponent(btnCrear))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(94)
-							.addComponent(lblArbitros, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(29, Short.MAX_VALUE))
-		);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addComponent(lblArbitros, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(btnAgregar)
-							.addGap(18)
-							.addComponent(btnBorrar)
-							.addGap(12))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(btnCrear)
-							.addGap(34))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(textAreaArbitro, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap())))
-		);
-		panel.setLayout(gl_panel);
+		datos = new DefaultListModel();
+		listarbitros = new JList(datos);
+		panel_4.add(listarbitros);
+		panelboton.setLayout(gl_panelboton);
+		
+		panel_5 = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) panel_5.getLayout();
+		flowLayout.setVgap(24);
+		flowLayout.setHgap(8);
+		contentPane.add(panel_5);
+		
+		btnCrear = new JButton("Crear Torneo");
+		panel_5.add(btnCrear);
+		btnCrear.setHorizontalAlignment(SwingConstants.RIGHT);
+		btnCrear.setForeground(new Color(100, 149, 237));
+		btnCrear.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
 		btnCrear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			   CrearTorneo();   
+			   CrearTorneo(); 
+			  
 			
 			}
 		});
-		panelboton.setLayout(gl_panelboton);
+		
 	}
 	public void SetArbitro(Arbitro Referee) {
 		tournament.Arbitros.add(Referee);
-		textAreaArbitro.append(Referee.getNombre()+"\r");
+		datos.addElement(Referee);
 	}
 	public void mostrarVentanaArbitro(){
 		InterfazArbitro VentanaAr = new InterfazArbitro(this); 
@@ -308,9 +300,9 @@ public class InterfazTorneo extends JFrame {
 	}
 	
 	public void borrarArbitro(){
-		
+		int x = listarbitros.getSelectedIndex();
+		datos.remove(x);
+		tournament.Arbitros.remove(x);
+		}
 	
-	}
 }
-
-
