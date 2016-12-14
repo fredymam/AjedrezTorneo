@@ -19,6 +19,10 @@ public class Jugador implements Comparable<Jugador>{
 	public int Desempate1;
 	public int Desempate2;
 	public int Desempate3;
+	public String toString(){
+		return "nombre";
+		
+	}
 	
 
 	public Jugador(String nombre) {
@@ -174,5 +178,7 @@ public class Jugador implements Comparable<Jugador>{
 	public int compareTo(Jugador rival) {
 		return nombre.compareTo(rival.getNombre());
 	}
+
+	
 	
 }

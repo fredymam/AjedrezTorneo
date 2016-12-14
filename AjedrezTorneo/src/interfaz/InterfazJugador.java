@@ -30,9 +30,18 @@ public class InterfazJugador {
 	private JTextField jtexfield_elo;
 	private JComboBox<String> comboBox_sexo;
 	private JTextField jtexfield_apellido;
-	private JComboBox<String> comboBox_categoria;
+	private JComboBox<String> comboBox_titulo;
 	private Container panel_5; 
 	private JTextField textField_1;
+	private JComboBox<String> combodia; 
+	private JComboBox<String> combomes;
+	private JComboBox<String> comboanio;
+	private JLabel lblNewLabel_5 ;
+	private JComboBox combotitulo;
+	private JLabel lblNewLabel_correo; 
+	
+	
+	
 	
 	public InterfazJugador(Torneo torneo) {
 		tournament = torneo;
@@ -83,15 +92,15 @@ public class InterfazJugador {
 		lblNewLabel_2.setFont(new Font("Bookman Old Style", Font.BOLD, 12));
 		panel_1.add(lblNewLabel_2);
 		
-		JComboBox<String> comboBox_1 = new JComboBox<String>();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"DD", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
-		panel_1.add(comboBox_1);
+		combodia = new JComboBox<String>();
+		combodia.setModel(new DefaultComboBoxModel(new String[] {"DD", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
+		panel_1.add(combodia);
 		
-		JComboBox<String> comboBox_2 = new JComboBox<String>();
-		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"MM", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"}));
-		panel_1.add(comboBox_2);
+		combomes = new JComboBox<String>();
+		combomes.setModel(new DefaultComboBoxModel(new String[] {"MM", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"}));
+		panel_1.add(combomes);
 		
-		JComboBox<String> comboanio = new JComboBox<String>();
+		comboanio = new JComboBox<String>();
 		Calendar Hoy = Calendar.getInstance();
 		for(int f= Hoy.get(Calendar.YEAR);f>=1900;f--) {	
             comboanio.addItem(String.valueOf(f));
@@ -137,34 +146,34 @@ public class InterfazJugador {
 		frame.getContentPane().add(panel_4);
 		panel_4.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		JLabel lblCategoria = new JLabel("Titulo");
-		lblCategoria.setFont(new Font("Bookman Old Style", Font.BOLD, 12));
-		lblCategoria.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_4.add(lblCategoria);
+		JLabel lblTitulo = new JLabel("Titulo");
+		lblTitulo.setFont(new Font("Bookman Old Style", Font.BOLD, 12));
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_4.add(lblTitulo);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"", "GMI ", "GM", "MI", "MF ", "F"}));
-		panel_4.add(comboBox);
+		combotitulo = new JComboBox();
+		combotitulo.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		combotitulo.setModel(new DefaultComboBoxModel(new String[] {"", "GMI ", "GM", "MI", "MF ", "F"}));
+		panel_4.add(combotitulo);
 		
 		JPanel panel_6 = new JPanel();
 		frame.getContentPane().add(panel_6);
 		
-		JLabel lblNewLabel_5 = new JLabel("Pais:");
+		lblNewLabel_5 = new JLabel("Pais:");
 		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_5.setFont(new Font("Bookman Old Style", Font.BOLD, 12));
 		panel_6.add(lblNewLabel_5);
 		
-		JComboBox comboBox_3 = new JComboBox(); //http://laendercode.net/es/3-letter-list.html
-		panel_6.add(comboBox_3);
+		JComboBox combopais = new JComboBox(); //http://laendercode.net/es/3-letter-list.html
+		panel_6.add(combopais);
 		
 		JPanel panel_7 = new JPanel();
 		frame.getContentPane().add(panel_7);
 		
-		JLabel lblNewLabel_6 = new JLabel("Correo:");
-		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_6.setFont(new Font("Bookman Old Style", Font.BOLD, 11));
-		panel_7.add(lblNewLabel_6);
+		lblNewLabel_correo = new JLabel("Correo:");
+		lblNewLabel_correo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_correo.setFont(new Font("Bookman Old Style", Font.BOLD, 11));
+		panel_7.add(lblNewLabel_correo);
 		
 		textField_1 = new JTextField();
 		panel_7.add(textField_1);
@@ -174,18 +183,30 @@ public class InterfazJugador {
 	}
 
 	private void add(JComboBox comboanio) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 	
 	private void RegistrarJugador(){
 		Jugador jugador = new Jugador(jtexfield_nombre.getText());
+		jugador.setApellido(jtexfield_apellido.getText());
+		
 		
 		if (comboBox_sexo.getSelectedIndex()==0){
 			jugador.setSexo('M');
 		} else jugador.setSexo('F');
 		tournament.Participantes.add(jugador);
 		JOptionPane.showMessageDialog(null, "Jugador Registrado");
+		
+		jugador.setNacimiento(combodia.getSelectedItem().toString()+"/"+combomes.getSelectedItem().toString()+"/"+comboanio.getSelectedItem().toString());
+		jugador.setElo(Integer.parseInt(jtexfield_elo.getText()));
+		jugador.setTitulo((String) comboBox_titulo.getSelectedItem());
+		jugador.setCorreo(lblNewLabel_correo.getText());
+		jugador.setPais(lblNewLabel_5 .getText());
+		
+		
+		JOptionPane.showMessageDialog(null, "Jugador Registrado");
 	}
+	
 
 }
